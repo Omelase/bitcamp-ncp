@@ -6,11 +6,12 @@
 <body>
     <table border="1">
         <caption>Caption</caption>
-        <colgroup>
-            <col span="2" style="background: red" />
-            <col style="background: blue" />
+        <colgroup><!-- column 스타일 설정 -->
+            <col span="2" style="background2: red" /><!-- 컬럼2개 -->
+            <col style="background: blue" /><!-- 나머지컬럼 -->
         </colgroup>
-        <thead style="background: green">
+        <thead style="background2: green"><!-- thead는 이게 우선 -->
+            <!-- 브라우저는 오타있으면 그냥 무시해버림 -->
             <tr>
                 <th>Table Header</th>
                 <th>Table Header</th>
@@ -34,7 +35,7 @@
                 <td>Table Data</td>
             </tr>
         </tbody>
-        <tfoot style="background: yellow">
+        <tfoot style="background2: yellow"><!-- tfoot은 이게 우선 -->
             <tr>
                 <td>Table Data</td>
                 <td>Table Data</td>

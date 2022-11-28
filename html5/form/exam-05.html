@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>radio 값 보내기</title>
+</head>
+<body>
+
+<h1>radio 값 보내기</h1>
+
+<ul>
+  <li>check하지 않으면 값을 보내지 않는다.</li>
+  <li>value를 지정하지 않으면 on을 보낸다.</li>
+  <li>value를 지정하면 그 값을 보낸다.</li>
+</ul> 
+
+<form id="form1" action="/html/form/exam05" method="get">
+  혈액형: <br>
+  <input type="radio" name="bloodtype" value="o" checked> O<br>
+  <input type="radio" name="bloodtype" value="a"> A<br>
+  <input type="radio" name="bloodtype" value="b"> B<br>
+  <input type="radio" name="bloodtype" value="ab"> AB<br>
+  <button>요청</button>
+</form>
+<!-- good = 파라미터 값. 주소창에 ?파라미터값이 들어감 -->
+
+</body>
+</html>

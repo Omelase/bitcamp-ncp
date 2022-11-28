@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>check box 값 보내기</title>
+</head>
+<body>
+
+<h1>check box 값 보내기</h1>
+
+<ul>
+  <li>check하지 않으면 값을 보내지 않는다.</li>
+  <li>value를 지정하지 않으면 on을 보낸다.</li>
+  <li>value를 지정하면 그 값을 보낸다.</li>
+</ul> 
+
+<form id="form1" action="/html/form/exam04" method="get">
+  재직자: <input type="checkbox" name="working"><br>
+  기혼자: <input type="checkbox" name="married" value="yes"><br>
+  <button>요청</button>
+</form>
+<!-- good = 파라미터 값. 주소창에 ?파라미터값이 들어감 -->
+
+</body>
+</html>

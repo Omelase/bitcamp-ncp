@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>select tag의 value</title>
+</head>
+<body>
+
+<h1>select tag의 value</h1>
+
+<ul>
+  <li>name: 서버에 보내는 파라미터 이름</li>
+  <li>id: 태그를 가리키는 식별자. 
+    보통 자바스크립트에서 태그를 다룰 때 사용할 것이다.
+  </li>
+</ul> 
+
+<form id="form1" action="/html/form/exam07" method="get">
+  혈액형: <br>
+  <select name="bloodtype">
+    <option value="">선택하시오!</option>
+    <option value="o">O</option>
+    <option value="a" selected>A</option>
+    <option value="b">B</option>
+    <option value="ab">AB</option>
+  </select>
+  <input id="btn1" type="submit" value="보내기"><br>
+  <!-- 버튼에 name주면 버튼 name도 보내지니 name붙이지 말 것. id는 식별자므로 보내지지 않음. -->
+</form>
+<!-- good = 파라미터 값. 주소창에 ?파라미터값이 들어감 -->
+
+</body>
+</html>

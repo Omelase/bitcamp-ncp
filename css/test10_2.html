@@ -16,13 +16,14 @@
 
   */
   body {
-    border: 1px solid black;
+    border: 1px solid red;
     min-height: 300px;
   }
 
   div {
     border: 1px solid black;
     margin: 10px 10px 10px 10px;
+    /* 마진은 요소들끼리 겹친다. 따라서 거리 20px아님 */
     padding: 0px;
   }
 
@@ -33,9 +34,11 @@
   }
 
   #d1 {background-color: red;}
+  
   #d11 {
     background-color: orange;
     min-height: 120px;
+    /* 자식요소없이도 최소높이를 가짐 */
   }
   #d111 {
     float: left;
@@ -58,6 +61,8 @@
 <body>
   <div id="d1">d1
     <div id="d11">d11
+      <!-- 텍스트도 자식요소임. d11아이디의 자식은 d11텍스트, d111아이디, d112아이디 
+      부모요소의 높이는 자식요소들의 높이 합.-->
       <div id="d111" class="c1">d111</div>
       <div id="d112" class="c1">d112</div>
     </div>

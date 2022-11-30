@@ -10,8 +10,9 @@
        테두리 안쪽을 기준으로 위치를 계산한다.
     => 만약 조상 중에 absolute나 relative, fixed가 없다면,
        문서 가장자리를 기준으로 자신의 위치를 조정한다.
-    => absolute 태그는 width, height를 지정하지 않으면 콘텐츠의 크기에 맞춘다.
+    => absolute 태그는 width, height를 지정하지 않으면 콘텐츠(자식요소)의 크기에 맞춘다.
     => 기준이 되는 태그가 움직이면 자신도 같이 움직인다.
+    기준은 보통 relative로 잡음. 다른 태그에 영향 안 끼치기 때문
   */
   html {
     border: 10px dotted navy;
@@ -22,6 +23,8 @@
   body {
     border: 5px dashed black;
     margin: 10px;
+    /* 기본 마진은 8px */
+    padding: 0px;
     position: relative;
   }
 
@@ -61,7 +64,12 @@
     position: absolute;
     margin: 0px;
     right: 10px;
-    top: 5px;
+    top: 0px;
+    /* 기준점 위에서 0px만큼 띄워라 */
+    /* 앱솔루트로 띄운 후 방향 명령어로 위치조작 */
+    left: 0px;
+    bottom: 10px;
+    /* right, top 보다 left, bottom이 우선 */
   }
   </style>
 </head>

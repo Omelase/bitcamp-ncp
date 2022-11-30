@@ -15,19 +15,19 @@
     xmargin: 10px;
     position:relative;
     xmin-height: 550px;
-    min-width: 600px;
+    xmin-width: 600px;
   }
 
   address {
-    xdisplay: inline;
+    display: inline;
     font-style: normal;
   }
 
   #bitcamp {
     background-color: gray;
     color: white;
-    xborder-radius: 4px;
-    xpadding: 3px 3px 0px 3px;
+    border-radius: 4px;
+    padding: 3px 3px 0px 3px;
   }
 
   #company {
@@ -39,10 +39,12 @@
     font-size: 1.2em;
     width: 180px;
     border: 1px solid red;
-    position: absolute;
+    xposition: absolute;
     left: 0px; 
     top: 0px;
-    xfloat: left;
+    /* 방향명령어는 앱솔루트가 돼야 함 */
+    float: left;
+    /* 플롯은 콘텐츠가 밀림. 앱솔루트는 완전히 덮어버림 */
   }
 
   #menu ul > li {
@@ -67,9 +69,11 @@
     /* 왼쪽에 이 태그의 내용을 가리는 것이 있다면
         그 아래로 위치하도록 이동시킨다.
         단 왼쪽에 있는 것이 float 객체일 때!*/
-    xclear: left; 
+    clear: left; 
     text-align: center;
     border: 1px solid red;
+    xposition: absolute;
+    xbottom: 0px;
   }
 
   #footer > p {

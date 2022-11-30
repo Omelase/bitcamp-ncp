@@ -19,64 +19,66 @@
   }
 
   address {
-    display: inline;
-    font-style: normal;
+    xdisplay: inline;
+    xfont-style: normal;
   }
 
   ul, ol {
-    border: 1px solid red;
+    xborder: 1px solid red;
   }
 
   ol {
-    xdisplay: none;
-    xvisibility: hidden;
+    display: none;
+    /* 안 보이고 자리가 사라짐 */
+    ㅌvisibility: hidden;
+    /* 안 보일뿐 자리가 사라지지 않음 */
   }
 
   #content ul {
     xvisibility: hidden;
-    display: none;
+    xdisplay: none;
   }
 
   #bitcamp {
-    background-color: gray;
-    color: white;
-    border-radius: 4px;
-    padding: 3px 3px 0px 3px;
+    xbackground-color: gray;
+    xcolor: white;
+    xborder-radius: 4px;
+    xpadding: 3px 3px 0px 3px;
   }
 
   #company {
-    color: navy;
+    xcolor: navy;
   }
 
   #menu {
-    background-color: lightgray;
-    font-size: 1.2em;
-    width: 300px;
-    float: left;
+    xbackground-color: lightgray;
+    xfont-size: 1.2em;
+    xwidth: 300px;
+    xfloat: left;
   }
 
   #menu ul > li {
-    font-weight: bold;
+    xfont-weight: bold;
   }
 
   #menu ol {
-    font-weight: normal;
+    xfont-weight: normal;
   }
 
   #content {
-    font-family: 바탕체, 궁서체, AppleMyungjo, serif;
-    margin-left: 320px;
+    xfont-family: 바탕체, 궁서체, AppleMyungjo, serif;
+    xmargin-left: 320px;
   }
 
   #footer {
-    font-size: 80%; /* = 0.8em */
-    clear: left; /* 왼쪽에 이 태그의 내용을 가리는 것이 있다면
+    xfont-size: 80%; /* = 0.8em */
+    xclear: left; /* 왼쪽에 이 태그의 내용을 가리는 것이 있다면
                     그 아래로 위치하도록 이동시킨다.*/
-    text-align: center;
+    xtext-align: center;
   }
 
   #footer > p {
-    font-style: italic;
+    xfont-style: italic;
     /* italic => 폰트 파일에 있는 이탤릭체를 사용한다.
        oblique => 운영체제가 폰트를 강제로 기울여서 이탤릭체처럼 보이게 한다.
                   폰트 파일에 이탤릭체가 없을 때 사용한다.

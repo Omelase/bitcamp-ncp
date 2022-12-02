@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>exam</title>
+</head>
+<body>
+  <h1>요점 정리 - 5.HTML 태그와 DOM 트리 객체</h1>
+  <p id="p1">오호라!</p>
+  <button id="btn1">확인</button>
+
+<script>
+var tag1 = document.getElementById("btn1");
+//tag가 있는 주소를 가리킴
+tag1.onclick = function() { // Observer 패턴: 리스너 => 이벤트 리스너 => 이벤트 핸들러 => 콜백함수(callback; cb)
+//클릭 이벤트에 대해 리스너를 등록하는 코드
+  var tag2 = document.getElementById("p1");
+  tag2.innerHTML = "비트캠프!";
+};
+//document의 dom tree에서 btn1의 주소를 찾아 주소를 리턴해 tag1에 저장, onclick이란 이름으로 함수를 정의, tag1이 가리키는 주소를 한번 클릭하면 onclick함수 호출, document에서 p1의 주소 찾아 주소를 리턴해 tag2에 저장, tag2에 "비트캠프!" 넣음
+//onclick은 미리 저장된 함수. 특정 이벤트가 발생할 때 호출되는 함수=event handler=event listener
+</script>
+</body>
+</html>

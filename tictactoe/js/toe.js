@@ -17,11 +17,11 @@ let winningPattern = [
     [0, 4, 8],
     [2, 4, 6],
 ];//승리패턴. 좌상단부터 우방향으로 숫자셈
-//Player 'X' plays first
+//X플레이어부터 시작
 let xTurn = true;
 let count = 0;
 
-//Disable All Buttons
+//모든 버튼 숨기기
 const disableButtons = () => {
     btnRef.forEach((element) => (element.disabled = true));
     //enable popup
@@ -30,17 +30,17 @@ const disableButtons = () => {
 //disableButtons : 버튼이 사라지는 이벤트 리스너
 //=> : function()대신 사용가능
 //forEach : 함수를 배열 요소 각각에 실행
-//Enable all buttons (For New Game and Restart)
+//새 게임 또는 다시하기일 때 모든 버튼보여짐
 const enableButtons = () => {
     btnRef.forEach((element) => {
         element.innerText = "";
         element.disabled = false;
     });
-    //disable popup
+    //팝업숨기기
     popupRef.classList.add("hide");
 };
 
-//This function is executed when a player wins
+//이길 때
 const winFunction = (letter) => {
     disableButtons();
     if (letter == "X") {
@@ -50,13 +50,13 @@ const winFunction = (letter) => {
     }
 };
 
-//Function for draw
+//무승부일때
 const drawFunction = () => {
     disableButtons();
     msgRef.innerHTML = "무승부!";
 };
 
-//New Game
+//새 게임
 newgameBtn.addEventListener("click", () => {
     count = 0;
     enableButtons();
@@ -66,48 +66,48 @@ restartBtn.addEventListener("click", () => {
     enableButtons();
 });
 
-//Win Logic
+//승리조건
 const winChecker = () => {
-    //Loop through all win patterns
+    //모든 승리패턴 반복
     for (let i of winningPattern) {
         let [element1, element2, element3] = [
             btnRef[i[0]].innerText,
             btnRef[i[1]].innerText,
             btnRef[i[2]].innerText,
         ];
-        //Check if elements are filled
-        //If 3 empty elements are same and would give win as would
+        //요소가 다 채워질 경우 체크
+        //빈 요소 3개가 동일하고 승리를 가져올 경우
         if (element1 != "" && (element2 != "") & (element3 != "")) {
             if (element1 == element2 && element2 == element3) {
-                //If all 3 buttons have same values then pass the value to winFunction
+                //3개의 버튼이 모두 같은 값이면 winFunction에 값 전달
                 winFunction(element1);
             }
         }
     }
 };
 
-//Display X/O on click
+//클릭할 때 O 또는 X 보여줌
 btnRef.forEach((element) => {
     element.addEventListener("click", () => {
         if (xTurn) {
             xTurn = false;
-            //Display X
+            //X보임
             element.innerText = "X";
             element.disabled = true;
         } else {
             xTurn = true;
-            //Display Y
+            //O보임
             element.innerText = "O";
             element.disabled = true;
         }
-        //Increment count on each click
+        //클릭할 때마다 카운트 증가
         count += 1;
         if (count == 9) {
             drawFunction();
         }
-        //Check for win on every click
+        //클릭할 때마다 승리조건 확인
         winChecker();
     });
 });
-//Enable Buttons and disable popup on page load
+//버튼 활성화 및 페이지 로드 시 팝업 비활성화
 window.onload = enableButtons;

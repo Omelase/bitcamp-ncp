@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>ex01</title>
-<!--
+  <head>
+    <meta charset="UTF-8" />
+    <title>ex01</title>
+    <!--
 자바스크립트(JavaScript)는 위에서 아래로 순서대로 실행하기 때문에
 다음 script 태그는 body 태그를 실행하기 전에 먼저 실행한다.
 따라서 다음 script 태그를 실행하는데 시간이 오래 걸릴수록
@@ -11,21 +11,21 @@ body의 내용 출력도 지연된다.
 그래서 body 전에 script를 실행할 때는
 가능한 시간이 적게 걸리는 작업을 수행하라!
 -->
-<script src="/javascript/ex01/exam05_1"></script>
-</head>
-<body>
+    <!-- <script src="http://localhost:3000/exam05_1"></script> -->
+    <!-- 해당 서버에서 자바스크립트를 달라고 요청 -->
+  </head>
+  <body>
+    <script>
+      console.log('--------------');
+    </script>
 
-<script>
-console.log("--------------")
-</script>
+    <h1>script 태그의 위치</h1>
 
-<h1>script 태그의 위치</h1>
+    <script>
+      console.log('--------------');
+    </script>
 
-<script>
-console.log("--------------")
-</script>
-
-<!--
+    <!--
 예전에는 script 태그를 head 태그 안에 두었다.
 그 시절에는 실행할 자바스크립트 코드의 양이 많지 않았기 때문에
 HTML 본문을 출력하기 전에 자바스크립트를 두어도 괜찮았다.
@@ -38,6 +38,7 @@ body 태그의 내용은 화면에 출력할 수 없기 때문에
 일단 화면의 일부를 출력한 후 자바스크립트를 실행하도록
 script 태그를 body의 맨 끝에 두는 게 요즘 경향이다.
 -->
-<script src="/javascript/ex01/exam05_2"></script>
-</body>
+    <script src="http://localhost:3000/exam05_1"></script>
+    <script src="http://localhost:3000/exam05_2"></script>
+  </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ex02</title>
+  </head>
+  <body>
+    <h1>연산자 - 비교연산자</h1>
+    <script>
+      'use strict';
+
+      console.log('Hello' == 'Hello');
+      console.log('hello' == 'hello');
+      console.log('Hello' == 'hello');
+
+      console.log('--------------------');
+
+      console.log('100' == 100); //==연산 전에 숫자 100을 문자열 '100'으로 바꾼 후에 비교한다.
+      console.log('100' === 100); //=== 두 피연산자가 같은 타입이고 값이 같은 때 true이다. 즉, 엄격하게 비교한다.
+      console.log('100' != 100); //같은걸로 인식해 false 리턴
+      //두 피연산자를 비교하기ㅣ 전에 100을 '100'으로 형변환 후에 비교한다.
+      console.log('100' !== 100); //다른걸로 인식해 true 리턴
+      //일단 두 피연산자의 데이터 타입이 다르기 때문에 값을 비교할 필요없이 두 값은 다르다.
+
+      console.log('--------------------');
+
+      console.log(100 < 200);
+      console.log(100 <= 200);
+      console.log(100 > 200);
+      console.log(100 >= 200);
+
+      console.log('--------------------');
+
+      console.log('AB' > 'AC');
+      console.log('a' > 'A');
+      console.log('똘' < '똠');
+      //문자열은 유니코드로 비교함
+
+      console.log('--------------------');
+
+      console.log(true == 'true');
+
+      console.log('--------------------');
+    </script>
+  </body>
+</html>

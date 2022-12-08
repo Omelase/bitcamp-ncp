@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>ex02</title>
-</head>
-<body>
-<h1>구조 분해(destructuring) - 객체</h1>
-<script>
-"use strict"
+  <head>
+    <meta charset="UTF-8" />
+    <title>ex02</title>
+  </head>
+  <body>
+    <h1>구조 분해(destructuring) - 객체</h1>
+    <script>
+      'use strict';
 
-var obj = new Object();
-obj.name = "홍길동";
-obj.age = 20;
-obj.tel = "1111-1111";
-obj.working = true;
+      var obj = new Object();
+      obj.name = '홍길동';
+      obj.age = 20;
+      obj.tel = '1111-1111';
+      obj.working = true;
 
-// 객체에서 값을 여러 변수에 분리하여 담을 때는 
-// 객체의 프로퍼티 이름과 같은 이름으로 변수를 선언한다.
-// => 분해 변수의 이름과 일치하는 프로퍼티 값을 넣어준다.
-var {tel, name, age, gender} = obj;
-console.log(name);
-console.log(age);
-console.log(tel);
-console.log(gender); // 객체에 지정된 이름의 프로퍼티가 없다면 undefined 이다.
+      // 객체에서 값을 여러 변수에 분리하여 담을 때는
+      // 객체의 프로퍼티 이름과 같은 이름으로 변수를 선언한다.
+      // => 분해 변수의 이름과 일치하는 프로퍼티 값을 넣어준다.
+      var { tel, name, age, gender } = obj; // 객체 값 분해는 중괄호
+      console.log(name);
+      console.log(age);
+      console.log(tel);
+      console.log(gender); // 객체에 지정된 이름의 프로퍼티가 없다면 undefined 이다.
+      console.log(obj[0]); //객체에 0이란 키가 없으므로
+      console.log(obj[name]); //객체의 키는 자동으로 string으로 들어감 (문자는 '' 안 써줘도 자동으로 문자열로 들어가지만 숫자는 ''써줘야 함)
+      console.log(obj['name']);
+      console.log("----------------");
+      let a = Object.values(obj);
+      console.log(a);
+      console.log(a[1]);
+      console.log("----------------");
+      let i;
+      for (i in obj) {
+        // 반복문의 대상이 객체일 경우,
+        // i 변수에 저장되는 것은 객체에 저장된 프로퍼티 이름이다.
+        console.log(i, obj[i]);
+      }
 
-
-</script>
-</body>
+      //객체에서 추출하고 싶은 프로퍼티만 추출할 수 있다.
+      var { name, age } = obj;
+      console.log(name, age);
+    </script>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

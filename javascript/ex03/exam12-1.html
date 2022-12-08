@@ -14,13 +14,13 @@
 //    (파라미터,파라미터,...) => {문장1; 문장2;}
 //
 //
-
+//일반함수 정의
 function f0() {
 	 return "안녕";
 }
 console.log(f0());
 
-
+//익명함수 정의
 var f1 = function() {
 	return "안녕";
 };
@@ -29,6 +29,7 @@ console.log(f1());
 // 애로우(arrow ) 함수 : 초간단 함수 정의 문법
 // 1) function 키워드를 제거한다.
 // 2) 대신 파라미터 블록과 코드 블록 사이에 화살표를 추가한다.
+// 3) 다른 언어에서는 람다라고 부른다.
 var f2 = () => {
 	return "안녕";
 };
@@ -41,7 +42,90 @@ console.log(f2());
 var f3 = () => "안녕";
 console.log(f3());
 
-console.log((() => "안녕")());
+console.log('-----------------');
+
+//익명 함수 정의 후 바로 호출하는 방법
+var f4 = function() {
+  return '안녕4';
+};
+console.log(f4());
+
+console.log((function() {
+  return '안녕4';
+})());
+
+//애로우 함수 정의 후 바로 호출하는 방법
+var f5 = () => '안녕5';
+console.log(f5());
+
+console.log((() => "안녕5")());
+
+console.log('-----------------');
+
+var plus = function(a, b) {
+  return a + b;
+};
+console.log(plus(100, 200));
+
+console.log((function(a, b) {
+  return a + b;
+})(100, 200));
+
+var plus = (a, b) => a + b;
+console.log(plus(111, 222));
+
+console.log(((a, b) => a + b)(111, 222));
+
+console.log('-----------------');
+
+function print(name) {
+  console.log(name + '님 반가워요!');
+}
+//일반함수 정의 땐 중괄호 끝에 세미콜론 붙이지 않는다. 할당문이 아니기 때문
+
+print('홍길동');
+
+let fn88 = function(name) {
+  console.log(name + '님 반가워요!');
+};
+
+//배열의 키는 인덱스
+//객체는 키와 밸류를 일일이 설정해줘야 하지만
+//배열은 자동으로 인덱스가 키로 설정됨
+
+//일반함수
+function xx(name) {
+  console.log(name + '님 반갑습니다.');
+} //일반함수는 세미콜론 안 붙이지만 그냥 붙이는게 속편함
+xx('홍길동1');
+
+
+//일반함수 바로 호출
+(function xx(name) {
+  console.log(name + '님 반갑습니다.');
+})('홍길동2');
+
+//익명함수
+var xx = function(name) {
+  console.log(name + '님 반갑습니다.');
+}; //할당문이므로 세미콜론
+xx('홍길동3');
+
+//익명함수 바로 호출
+(function(name) {
+  console.log(name + '님 반갑습니다.');
+})('홍길동4');
+
+//애로우 함수
+((name) => {
+  console.log(name + '님 반갑습니다.');
+})('홍길동5');
+
+//애로우 함수 중괄호 생략
+((name) => console.log(name + '님 반갑습니다.')
+)('홍길동6');
+
+
 </script>
 
 </body>

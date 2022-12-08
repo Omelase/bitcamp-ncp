@@ -22,7 +22,7 @@ f1(100);
 console.log("----------------");
 
 f1(100, 200, 300, 400);
-console.log("----------------");
+console.log("f2----------------");
 
 function f2(a) {
 	for (var i = 0; i < arguments.length; i++) {
@@ -30,7 +30,7 @@ function f2(a) {
 	}
 }
 f2(100, 200, 300, 400);
-console.log("----------------");
+console.log("f3----------------");
 
 function f3(a) {
   for (var value of arguments) {
@@ -39,7 +39,7 @@ function f3(a) {
 }
 
 f3(100, 200, 300, 400);
-console.log("----------------");
+console.log("f4----------------");
 
 function f4(a) {
   for (var i in arguments) {
@@ -48,7 +48,7 @@ function f4(a) {
 }
 
 f4(100, 200, 300, 400);
-console.log("----------------");
+console.log("f5----------------");
 
 function f5(a) {
 	// arguments 내장 변수는 Array() 초기화시킨 배열 객체가 아니기 때문에

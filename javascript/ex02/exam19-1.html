@@ -1,40 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>ex02</title>
-</head>
-<body>
-<h1>반복문 - for(;;)</h1>
-<script>
-"use strict"
-// 인덱스를 가지고 반복할 때 사용한다.
+  <head>
+    <meta charset="UTF-8" />
+    <title>ex02</title>
+  </head>
+  <body>
+    <h1>반복문 - for(;;)</h1>
+    <script>
+      'use strict';
+      // 인덱스를 가지고 반복할 때 사용한다.
 
-var arr = ["aaa", "bbb", true, 100];
-var i;
-for (i = 0; i < arr.length; i++) {
-	console.log(arr[i]);
-}
-console.log("---------------------");
+      const arr = ['aaa', 'bbb', true, 100];
+      let i;
+      for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+      }
+      console.log('---------------------');
 
-for (var x = 0; x < arr.length; x++) {
-    console.log(arr[x]);
-}
-</script>
-</body>
+      for (let x = 0; x < arr.length; x++) {
+        console.log(arr[x]);
+      }
+      console.log('---------------------');
+
+      console.log(i);
+      console.log(x); //x는 for문에서 선언한 로컬 변수이다. for 문을 종료하면 자동 제거
+    </script>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

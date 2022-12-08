@@ -127,11 +127,15 @@ btnRef.forEach((element) => {
       //X보임
       element.innerText = 'X';
       element.disabled = true;
+        element.classList.remove('o-cursor');
+        element.classList.add('x-cursor');
     } else {
       xTurn = true;
       //O보임
       element.innerText = 'O';
       element.disabled = true;
+        element.classList.add('o-cursor');
+        element.classList.remove('x-cursor');
     }
     //클릭할 때마다 카운트 증가
     count += 1;
@@ -141,6 +145,10 @@ btnRef.forEach((element) => {
     }
     //클릭할 때마다 승리조건 확인
     winChecker();
+    // if (count % 2 == 0) {
+    // }
+    // else {
+    // }
   });
 });
 

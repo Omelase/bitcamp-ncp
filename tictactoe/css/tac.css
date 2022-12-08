@@ -89,3 +89,11 @@ html {
 .popup.hide {
   display: none;
 }
+
+.button-option.o-cursor {
+  cursor: url('./O.png'), auto;
+}
+
+.button-option.x-cursor {
+  cursor: url('./X.png'), auto;
+}

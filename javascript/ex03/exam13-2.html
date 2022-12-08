@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex03</title>
+</head>
+<body>
+<h1>함수 - 애로우(arrow) 함수를 아규먼트로 전달하기</h1>
+<script>
+"use strict"
+
+let arr = [100, '홍길동', 3.14, '임꺽정', true];
+
+let arr2 = [100, 'dsd', 3.14, '임dss', true];
+
+function forEach(a, cb) {
+  for (let i = 0; i < a.length; i++) {
+    cb(i, a[i]); //공식 내장함수하고 인자 거꾸로 됨
+  }
+}
+console.log('------------------');
+//내장함수
+arr.forEach((x, y) => console.log(y + ': ' + x));
+console.log('------------------');
+//내장함수
+arr.forEach((value, index) => console.log(index + ': ' + value));
+console.log('------------------');
+//일반함수 바로 호출
+forEach(arr2, function ilban(x, y){console.log(x + ': ' + y)});
+console.log('------------------');
+//익명함수 바로 호출
+forEach(arr, function(x, y){console.log(x + ': ' + y)});
+console.log('------------------');
+//애로우함수 바로 호출
+forEach(arr, (x, y) => console.log(x + ': ' + y));
+console.log('------------------');
+
+//arr = a
+//내가 만든 arrow function = cb
+//x = i
+//y = a[i]
+
+//forEach()실행 결과:
+//0: 100
+//1: 홍길동
+//2: 3.14
+//3: 임꺽정
+//4: true
+
+
+
+</script>
+
+</body>
+</html>

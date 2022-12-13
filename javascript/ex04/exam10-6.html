@@ -17,6 +17,7 @@ function createScore(name, kor, eng, math) {
 	// this 내장 변수에 그 생성된 객체 주소가 저장된다.
 	// 이렇게 되면 이 함수 내부에서 객체를 생성할 필요가 없다.
 	// this 내장 변수를 사용하여 객체를 사용하면 된다.
+  
 	this.name = name;
 	this.kor = kor;
 	this.eng = eng;
@@ -30,12 +31,12 @@ function createScore(name, kor, eng, math) {
 
   // 이 함수에서 객체를 생성하지 않았기 때문에
 	// 객체를 리턴할 필요가 없다.
-}
+} // 생성된 객체를 초기화시키는 역할을 하는 함수 = 생성자
 
 var scores = []; //new Array();
 scores[0] = new createScore("홍길동", 100, 100, 100);
 scores[1] = new createScore("임꺽정", 90, 90, 90);
-scores[2] = new createScore("유관순", 80, 80, 80);
+scores[2] = new createScore("유관순", 80, 80, 80); //new없애면 에러뜨는 이유
 
 // 이렇게 new 명령을 통해 생성된
 // 기본 객체를 초기화시키는 함수를 "생성자(constructor)" 라고 부른다.

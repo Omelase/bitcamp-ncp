@@ -9,7 +9,10 @@
 <script>
 "use strict"
 // arrow function이나 익명 함수나 같다. 
-// 
+// 함수도 객체, 객체는 메모리에 저장됨
+//메모리에서 코드가 들어있는 부분은 코드 조각(code segment)이라 부름
+//코드 세그먼트? 읽기 전용
+//데이터 세그먼트? 읽기/쓰기 가능(변수 값 변경 가능)
 function closureMaker(fnType, count) { 
 	switch (fnType) {
 	case "sum":
@@ -19,7 +22,7 @@ function closureMaker(fnType, count) {
 	            sum += i;
 	        }
 	        console.log("합계 =", sum);
-	    };
+	    }; //break없이도 return으로 빠져나올 수 있음
 	case "factorial":
       return () => {
 	        var sum = 1;

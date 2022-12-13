@@ -32,7 +32,7 @@ Score.aver = function() {
 
 var score1 = new Score("홍길동", 100, 100, 100);
 console.log(score1.sum(), score1.aver()); // 실행 오류!
-
+// this에 객체주소 전달이 안 됨
 var score2 = new Score("임꺽정", 90, 90, 90);
 console.log(score2.sum(), score2.aver()); // 실행 오류!
 

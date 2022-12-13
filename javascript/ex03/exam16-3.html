@@ -17,6 +17,8 @@
 var ta = document.getElementById("ta");
 
 document.getElementById("btn1").onclick = () => {
+  //태그객체.onclick = 함수주소;
+  //사용자가 마우스로 태그를 클릭하면 웹브라우저가 onclick 이름으로 저장된 함수를 호출. 따라서 위에 입력한 함수주소 = callback = event handler = event listener
 	// input, textarea, select 등 입력폼 항목의 값을 꺼낼 때는
 	// innerHTML이 아니라 value 프로퍼티를 사용해야 한다.
 	var str = ta.value;

@@ -25,7 +25,7 @@ var el = document.getElementsByTagName("h2");
 //var e1 = $("h2");
 
 console.log(el.constructor.name);
-
+console.log("--------------------------");
 // HTMLCollection 객체는 배열은 아니지만,
 // 배열처럼 length 프로퍼티가 있고,
 // 인덱스 번호를 이용하여 찾은 태그들을 꺼낼 수 있다.
@@ -40,7 +40,7 @@ console.log("--------------------------");
 // 프로퍼티 개수 만큼 반복한다.
 // 그래서 프로퍼티 이름이 인덱스가 아닌 프로퍼티까지 반복하는 문제가 있다.
 // 즉 HTMLCollection에 대해 다음과 같이 반복문을 사용하지 말라!
-for (var i in el) { //el은 객체이기 때문에 i 변수에는 프로퍼티 이름이 저장된다.
+for (var i in el) { //el은 배열이 아니라 객체이기 때문에 i 변수에는 프로퍼티 이름이 저장된다.
     //console.log(i, el[i]);
     console.log(i, el[i].innerHTML);
 }
@@ -49,8 +49,8 @@ console.log("--------------------------");
 // HTMLCollection은 iterable 규칙을 구현하였기 때문에
 // for...of 반복문을 사용할 수 있다.
 // => for (var 변수 of 배열 또는 iterable 구현체) {...}
-for (var e of el) {
-    console.log(e.innerHTML);
+for (var i of el) {
+    console.log(i.innerHTML);
 }
 
 </script>

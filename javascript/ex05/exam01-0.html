@@ -10,6 +10,8 @@
 <script>
 "use strict"
 
+// 인스턴스 메서드: 생성자가 추가한 객체에 대해 호출
+
 // 자바스크립트는 태그를 다루는 도구를 제공한다.
 // 그 도구를 "DOM(Document Object Model) API"라 부른다.
 //
@@ -21,8 +23,9 @@
 
 // document의 타입은?
 // => 즉 document 객체를 초기화시킨 생성자는?
+console.log('---------------------------------------');
 console.log(document.constructor.name);
-
+console.log('---------------------------------------');
 // document 객체를 통해 사용할 수 있는 함수나 변수는?
 // => HTMLDocument 생성자가 추가한 함수나 변수이다.
 // => 어떤 함수와 변수가 있는지 알고 싶다면 문서 보세요.
@@ -31,9 +34,9 @@ console.log(document.constructor.name);
 //    Document() --> Node() ---> EventTarget() ---> Object()
 
 console.log(document);
-
+console.log('---------------------------------------');
 console.log(Document.prototype);
-
+console.log('---------------------------------------');
 // Document()의 함수
 console.log(document.createElement); // document ---> Document.prototype
 

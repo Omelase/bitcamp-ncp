@@ -44,17 +44,18 @@ function f1() {
 document.querySelector("#link3").onclick = function() {
   alert("OK!");
   return false; // false를 리턴하면 a 태그의 기본 동작을 취소한다.
-}
+};
 
 document.querySelector("#link4").onclick = function(e) {
-  e.preventDefault(); // a 태그의 기본 동작을 비활성화시킨다. 리스너 호출이 끝난 후 서버에 요청하지 않는다.
+  e.preventDefault(); // a 태그의 기본 동작을 비활성화시킨다. 리스너 호출이 끝난 후 서버에 요청하지 않는다. //return false와 같은 동작
+
   alert("OK!");
-}
+};
 
 document.querySelector("#link5").addEventListener("click", function() {
   alert("OK!");
   return false; // addEventListener()로 함수를 등록하면
-                // return 값으로 a 태그의 기본 동작을 취소할 수 없다.
+                // return 값으로 a 태그의 기본 동작을 취소할 수 없다. //addEventListener로 등록하면 안 먹힘
 });
 
 document.querySelector("#link6").addEventListener("click", function(e) {

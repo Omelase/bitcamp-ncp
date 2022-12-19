@@ -8,7 +8,8 @@
 <h1>AJAX - GET 요청</h1>
 
 <h2>일반 GET 요청</h2>
-<form action="test4" method="get">
+<form action="http://localhost:3000/exam02-1" method="get">
+  <!-- 같은 서버 아니므로 /exam02-1앞에 주소 제대로 적어줘야 함. vscode포트번호는 5500임 -->
 이름: <input type="text" name="name"><br>
 나이: <input type="text" name="age"><br>
 <button type="submit">등록</button> 
@@ -20,6 +21,7 @@
 <h2>AJAX GET 요청</h2>
 <button id="btn1">요청</button><br>
 <textarea id="ta" cols="80" rows="10"></textarea>
+<!-- 현재 페이지는 놔두고 서버에 따로 요청해 현재 페이지에 출력. 뒤로가기 필요없음 -->
 
 <script>
 "use strict"
@@ -30,7 +32,8 @@ document.querySelector("#btn1").onclick = () => {
     var xhr = new XMLHttpRequest();
     
     // GET 요청은 데이터를 URL에 붙인다. 
-    xhr.open("GET", "test4?name=홍길동&age=20", false);
+    xhr.open("GET", "http://localhost:3000/exam02-1?name=홍길&age=20", false);
+    // URL주소형태로 쓰면 자동 인코딩됨
     xhr.send();
     ta.value = xhr.responseText;
 };

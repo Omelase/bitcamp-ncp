@@ -36,9 +36,10 @@ document.querySelector("#btn1").onclick = () => {
     // 즉 open()을 호출하기 전에 등록해야 한다.
     xhr.onreadystatechange = () => {
         console.log("현재 요청 상태: ", xhr.readyState);
-    };
+    }; // 서버에서 응답이 오면 호출
+    // xhr.readyState은 4가지 상태로 호출
     
-    xhr.open("GET", "test5", true);
+    xhr.open("GET", "http://localhost:3000/exam03-1", true);
     console.log("open() 리턴함.");
     
     xhr.send();

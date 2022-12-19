@@ -1,49 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>ex07</title>
-</head>
-<body>
-<h1>AJAX 라이브러리 만들기 - myQuery</h1>
-<table border="1">
-<thead>
-    <tr><th>번호</th><th>제목</th><th>작성자</th><th>조회수</th></tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-<button id="btn1">데이터 가져오기!</button>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ex07</title>
+  </head>
+  <body>
+    <h1>jQuery 만들기 - 2. 태그 만들기</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>조회수</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <button id="btn1">데이터 가져오기!</button>
 
-<script src="myquery-02.js"></script>
-<script>
-"use strict"
+    <script src="jquery-02.js"></script>
 
-var tbody = document.querySelector("tbody");
+    <script>
+      // var str = '<tr>';
+      // console.log(str.startsWith('<'));
+      // console.log(str.substring(1, str.length - 1));
+    </script>
 
-document.querySelector("#btn1").onclick = () => {
-  myQuery.ajax(
-    'test6.jsp', 
-    function(result) {
-      var arr = JSON.parse(result);
-      for (var b of arr) {
-         var tr = document.createElement("tr");
-         tr.innerHTML = "<td>" + b.no + "</td>" + 
-            "<td>" + b.title + "</td>" + 
-            "<td>" + b.writer + "</td>" +
-            "<td>" + b.viewCnt + "</td>";
-         tbody.appendChild(tr);
-       }
-    }, function() { 
-      alert("서버에서 데이터를 가져오는 중에 오류 발생!");
-    });
-};
+    <script>
+      'use strict';
 
-</script>
-</body>
+      var tbody = $('tbody')[0];
+
+      document.querySelector('#btn1').onclick = () => {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+              console.log(xhr.responseText);
+
+              // 서버에서 받은 JSON 문자열을 자바스크립트 객체로 변환한다.
+              // => deserialization (역직렬화)
+              var arr = JSON.parse(xhr.responseText);
+              console.log(arr);
+
+              // 배열을 반복하여 값을 꺼낸다.
+              for (var b of arr) {
+                // tr 태그를 만든다.
+                var tr = $('<tr>');
+
+                // tr 태그에 게시물 데이터를 넣는다.
+                tr.innerHTML =
+                  '<td>' +
+                  b.no +
+                  '</td>' +
+                  '<td>' +
+                  b.title +
+                  '</td>' +
+                  '<td>' +
+                  b.writer +
+                  '</td>' +
+                  '<td>' +
+                  b.viewCnt +
+                  '</td>';
+
+                // tr 태그를 tbody의 자식 태그로 붙인다.
+                tbody.appendChild(tr);
+              }
+            }
+          }
+        };
+        xhr.open('GET', 'http://localhost:3000/exam04-3', true);
+        xhr.send();
+      };
+    </script>
+  </body>
 </html>
-
-
-
-
-

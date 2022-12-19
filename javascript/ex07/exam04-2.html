@@ -17,6 +17,8 @@
 var header = document.querySelector("#header"),
     footer = document.querySelector("#footer");
 
+
+// 함수 한번만 호출할 것이므로 익명함수 생성하고 바로 호출하는 문법 사용
 (function() { // 머리말 가져오기
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {

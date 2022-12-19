@@ -30,9 +30,9 @@ document.querySelector("#btn1").onclick = () => {
     var xhr = new XMLHttpRequest();
 
     xhr.onreadystatechange = () => {
-        if (xhr.readyState == 4) {
+        if (xhr.readyState == 4) { // xhr.readyState ==4면 서버에서 응답했다는 의미
         	// 서버의 실행이 정상적인지 여부에 따라 처리를 분리하기
-        	if (xhr.status == 200) {
+        	if (xhr.status == 200) { // 서버에서 리턴한 status 코드값. xhr.status == 200면 정상
         	  // a와 b 값을 정상적으로 입력했을 때 서버는 정상적으로 실행한다. 
         	  r.value = xhr.responseText;
         	  
@@ -51,10 +51,29 @@ document.querySelector("#btn1").onclick = () => {
         }
     };
     
-    xhr.open("GET", "test6?a=" + a.value + "&b=" + b.value, true);
+    xhr.open("GET", "http://localhost:3000/exam03-5?a=" + a.value + "&b=" + b.value, true);
     xhr.send();
     console.log("send() 리턴함.");
 };
+
+// AJAX 활용
+
+// 1. 화면의 일부를 가져오기
+// 1) 브라우저에서 AJAX 요청
+// 2) 서버에서 HTML 코드 응답
+// 3) HTML 코드를 삽입해 화면의 일부를 갱신
+
+// 2. 데이터를 가져오기
+// 1) 브라우저에서 AJAX 요청
+// 2) 서버에서 JSON 또는 XML 응답
+// 3) 브라우저에서 응답 데이터로 HTML 코드 생성
+// 4) HTML 코드를 삽입해 화면의 일부를 갱신
+
+// AJAX의 응답결과가 JSON 또는 XML데이터인 이유
+// HTML 코드를 응답할 때 문제점
+// 브라우저가 웹이 아니라 네이티브 앱화면일 때 코드를 따로 짜야 함(java 또는 kotlin, object C 또는 swift로 만든 앱화면을 HTML 코드로 변경 불가)
+
+// 데이터로 응답하면 네이티브 앱화면마다 전용 UI component를 생성해 삽입 가능
 
 </script>
 </body>

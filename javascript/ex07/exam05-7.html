@@ -1,46 +1,87 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>ex07</title>
-</head>
-<body>
-<h1>AJAX 라이브러리 만들기 - myQuery III</h1>
-<table border="1">
-<thead>
-    <tr><th>번호</th><th>제목</th><th>작성자</th><th>조회수</th></tr>
-</thead>
-<tbody>
-</tbody>
-</table>
-<button id="btn1">데이터 가져오기!</button>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ex07</title>
+  </head>
+  <body>
+    <h1>jQuery 만들기 - 7. appendTo()</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>조회수</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <button id="btn1">데이터 가져오기!</button>
 
-<script src="myquery-07.js"></script>
-<script>
-"use strict"
+    <!-- <p id="p1">hahaha</p>
+    <div>
+      <div class="dd">Hello1</div>
+      <div class="dd">Hello2</div>
+      <div class="dd">Hello3</div>
+    </div>  -->
 
-var tbody = document.querySelector("tbody");
+    <script src="jquery-07.js"></script>
 
-$("#btn1").click(() => {
+    <script>
+      // let p = $('.dd');
+      // console.log(p);
+      // let e = $('#p1');
+      // console.log(p);
+      // p.append(e);
+    </script>
 
-  $.getJSON('test6.jsp', function(result) {
-    for (var b of result) {
-        $("<tr>")
-          .html("<td>" + b.no + "</td>" + 
-           "<td>" + b.title + "</td>" + 
-           "<td>" + b.writer + "</td>" +
-           "<td>" + b.viewCnt + "</td>")
-          .appendTo(tbody);
-    }
-  });
+    <script>
+      'use strict';
 
-});
+      var tbody = $('tbody');
 
-</script>
-</body>
+      $('#btn1').on('click', () => {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+
+              // 서버에서 받은 JSON 문자열을 자바스크립트 객체로 변환한다.
+              // => deserialization (역직렬화)
+              var arr = JSON.parse(xhr.responseText);
+
+              // 배열을 반복하여 값을 꺼낸다.
+              for (var b of arr) {
+                // tr 태그를 만든다.
+                var tr = $('<tr>');
+
+                // tr 태그에 게시물 데이터를 넣는다.
+                tr.html(
+                  '<td>' +
+                    b.no +
+                    '</td>' +
+                    '<td>' +
+                    b.title +
+                    '</td>' +
+                    '<td>' +
+                    b.writer +
+                    '</td>' +
+                    '<td>' +
+                    b.viewCnt +
+                    '</td>'
+                );
+                // tr 태그를 tbody의 자식 태그로 붙인다.
+                tr.appendTo(tbody);
+              }
+            } else {
+              alert('데이터 요청 오류!')
+            }
+          }
+        };
+        xhr.open('GET', 'http://localhost:3000/exam04-3', true);
+        xhr.send();
+      });
+    </script>
+  </body>
 </html>
-
-
-
-
-

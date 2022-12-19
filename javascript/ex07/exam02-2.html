@@ -8,7 +8,8 @@
 <h1>AJAX - POST 요청</h1>
 
 <h2>일반 POST 요청</h2>
-<form action="test4" method="post">
+<form action="http://localhost:3000/exam02-2" method="post">
+  <!-- method 속성의 디폴트값은 get -->
 이름: <input type="text" name="name"><br>
 나이: <input type="text" name="age"><br>
 <button type="submit">등록</button> 
@@ -30,7 +31,7 @@ document.querySelector("#btn1").onclick = () => {
     var xhr = new XMLHttpRequest();
     
     // POST 요청은 데이터를 send()를 호출할 때 넘긴다. 
-    xhr.open("POST", "test4", false);
+    xhr.open("POST", "http://localhost:3000/exam02-2", false); // POST 요청은 쿼리 스트링 형태로 보내지 않음
     
     // 주의! 
     // 서버에 POST 요청으로 데이터를 보낼 때는 반드시 Content-Type 헤더를 설정하여 
@@ -40,10 +41,10 @@ document.querySelector("#btn1").onclick = () => {
     //
     xhr.setRequestHeader(
         "Content-Type", 
-        "application/x-www-form-urlencoded");
+        "application/x-www-form-urlencoded"); // 서버에 요청보내기 전에 콘텐츠 타입 설정해줘야 함
     
     var messageBody = "name=" + window.encodeURIComponent("홍길동") + "&age=20";
-    console.log(messageBody);
+    console.log(messageBody); // URL인코딩해야 할 값이 있으면 따로 함수 호출해야 함
     
     xhr.send(messageBody);
     

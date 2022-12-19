@@ -23,7 +23,7 @@ document.querySelector("#btn1").onclick = () => {
     var xhr = new XMLHttpRequest();
     
     // 비동기 요청을 하려면 3번 파라미터를 true로 설정해야 한다.
-    xhr.open("GET", "test5", true);
+    xhr.open("GET", "http://localhost:3000/exam03-1", true);
     xhr.send();
     console.log("send() 리턴함.");
     // 별도의 스레드를 통해 요청을 수행시키고 
@@ -33,7 +33,7 @@ document.querySelector("#btn1").onclick = () => {
     // 서버가 응답하기 전에 다음 코드를 실행한다면,
     // responseText 변수에는 아직 서버가 응답한 결과가 들어있지 않기 때문에 
     // 결과를 제대로 출력할 수 없을 것이다.
-    ta.value = xhr.responseText;
+    ta.value = xhr.responseText; // 사용자 입장에서 어떨 땐 되고 어떨 땐 안 되는 문제 발생
     
     // 해결책?
     // => 서버에서 응답을 완료했을 때 결과를 꺼내라!

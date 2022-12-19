@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ex07</title>
+  </head>
+  <body>
+    <h1>AJAX - 응용 4: 공공데이터오픈API 호출</h1>
+    날짜: <input id="base_date" name="base_date" /><br />
+    x좌표: <input id="nx" name="nx" /><br />
+    y좌표: <input id="ny" name="ny" /><br />
+    <button id="btn1">요청</button><br />
+    <textarea id="ta" cols="80" rows="10"></textarea>
+
+    <script>
+      'use strict';
+
+      var baseDate = document.querySelector('#base_date');
+      var nx = document.querySelector('#nx');
+      var ny = document.querySelector('#ny');
+      var ta = document.querySelector('#ta');
+
+      document.querySelector('#btn1').onclick = () => {
+        var xhr = new XMLHttpRequest();
+        xhr.open(
+          'GET',
+          'http://localhost:3000/proxy2?base_date=' +
+            base_date.value +
+            '&nx=' +
+            nx.value +
+            '&ny=' +
+            ny.value,
+          false
+        );
+        xhr.send();
+        ta.value = xhr.responseText;
+      };
+    </script>
+  </body>
+</html>
+
+
+<!-- 바닐라js로 api를 직접 call하면 속도빠르지만 코드가 복잡하고 cross browser 문제 발생 -->
+<!-- jquery이용해 브라우저 간 차이점을 없애고 웹브라우저에 따라 명령을 달리 수행 -->

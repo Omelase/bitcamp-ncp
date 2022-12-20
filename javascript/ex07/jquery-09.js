@@ -5,17 +5,19 @@
 // 5. html()
 // 6. on()
 // 7. appendTo()
+// 8. Method Chaining
+// 9. click()
 function jQuery(selector) {
   let el = []; // 생성한 태그나 찾은 태그를 담는 배열
   if (selector.startsWith('<')) {
-    el[0] = document.createElement(selector.substring(1, selector.length - 1)); // 꺽쇠 안 문자열만 추출 //el =[]
+    el[0] = document.createElement(selector.substring(1, selector.length - 1)); // 꺽쇠 안 문자열만 추출
   } else {
     let nodeList = document.querySelectorAll(selector);
     for (let e of nodeList) {
       el.push(e);
     }
   }
-
+  
   el.append = function(childBox) {
     // 자식 태그를 복제해서 각 부모 태그에 붙인다.
     for (let parent of el) {
@@ -30,34 +32,51 @@ function jQuery(selector) {
         child.parentElement.removeChild(child);
       }
     }
+
+    return el;
   };
 
   el.appendTo = function(parents) {
     // 자식 태그를 복제해서 각 부모 태그에 붙인다.
-    for (let parent of parents) { // tbody
+    for (let parent of parents) {
       // 자식들이 들어있는 상자에서 자식을 한 개씩 꺼내 복제하여 각 부모의 자식으로 붙인다.
-      for (let child of el) { // tr
+      for (let child of el) {
         parent.appendChild(child.cloneNode(true));
       }
     }
     // 자식 태그는 제거한다.
-    for (let child of el) {  // tr
+    for (let child of el) { // createElement로 생성한 태그는 부모가 없으므로 제외
       if (child.parentElement != null || child.parentElement != undefined) {
-        child.parentElement.removeChild(child); // tr은 부모가 없는 상태므로 패스
+        child.parentElement.removeChild(child);
       }
     }
+
+    return this; // 함수를 호출할 때 만든 주소가 this에 들어감
   };
 
   el.html = function(content) {
     for (let e of el) {
       e.innerHTML = content;
     }
+
+    return this; // 함수가 받은 주소값을 리턴
   };
 
   el.on = function(eventName, listener) {
     for (let e of el) {
       e.addEventListener(eventName, listener);
     }
+
+    return this; // 세 함수가 같은 객체에 대해 작업 수행
+  };
+
+  el.click = function(handler) {
+    this.on('click', handler);
+    // for (let e of el) {
+    //   e.addEventListener('click', handler);
+    // }
+
+    return this;
   };
 
   return el;

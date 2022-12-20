@@ -5,7 +5,7 @@
     <title>ex07</title>
   </head>
   <body>
-    <h1>jQuery 만들기 - 8. Method Chaining</h1>
+    <h1>jQuery 만들기 - 10. 리팩토링</h1>
     <table border="1">
       <thead>
         <tr>
@@ -26,7 +26,7 @@
       <div class="dd">Hello3</div>
     </div>  -->
 
-    <script src="jquery-08.js"></script>
+    <script src="jquery-10.js"></script>
 
     <script>
       function hello(name) {
@@ -48,9 +48,9 @@
     <script>
       'use strict';
 
-      var tbody = $('tbody');
+      var tbody = $('tbody'); // 이제 tbody는 el 배열이 아니라 ElementBox 객체
 
-      $('#btn1').on('click', () => {
+      $('#btn1').click(() => {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => {
           if (xhr.readyState == 4) {

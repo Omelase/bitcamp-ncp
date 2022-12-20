@@ -32,7 +32,7 @@ function jQuery(selector) {
       }
     }
 
-    return this; // 주소를 리턴해 메소드 체인 가능하도록 함
+    return el;
   };
 
   el.appendTo = function(parents) {
@@ -50,7 +50,7 @@ function jQuery(selector) {
       }
     }
 
-    return this;
+    return this; // 함수를 호출할 때 만든 주소가 this에 들어감
   };
 
   el.html = function(content) {
@@ -58,7 +58,7 @@ function jQuery(selector) {
       e.innerHTML = content;
     }
 
-    return this;
+    return this; // 함수가 받은 주소값을 리턴
   };
 
   el.on = function(eventName, listener) {
@@ -66,7 +66,7 @@ function jQuery(selector) {
       e.addEventListener(eventName, listener);
     }
 
-    return this;
+    return this; // 세 함수가 같은 객체에 대해 작업 수행
   };
 
   return el;

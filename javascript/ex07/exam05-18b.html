@@ -51,7 +51,7 @@
       var tbody = $('tbody'); // 이제 tbody는 el 배열이 아니라 ElementBox 객체
 
       $('#btn1').click(() => {
-        $.getJSON('http://localhost:3000/exam04-3', (result) => {
+        $.getJSON('http://localhost:8080/boards', (result) => {
           result.forEach((b) => {
             $('<tr>')
               .html(

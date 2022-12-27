@@ -1,0 +1,2 @@
+rootProject.name = 'backend-app'
+include('app') // 현재 프로젝트에 app폴더를 하위 프로젝트로 포함

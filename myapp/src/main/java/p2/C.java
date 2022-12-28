@@ -1,5 +1,5 @@
 package p2;
 
-class C {
+public class C {
   
 }

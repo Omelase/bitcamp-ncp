@@ -1,5 +1,5 @@
 package p2.px;
 
-class C {
+public class C {
   
 }

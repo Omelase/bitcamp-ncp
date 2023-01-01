@@ -21,15 +21,15 @@ public class Exam0430 {
   }
 
   public static void main(String[] args) {
-    MyObject ref;
-    ref = getMyObject();
-    System.out.println(ref.a);
-    System.out.println(ref.b);
+    MyObject re;
+    re = getMyObject();
+    System.out.println(re.a);
+    System.out.println(re.b);
   }
 }
 
 // 1) main() 호출
-//    => JVM Stack: args, ref 변수 생성
+//    => JVM Stack: args, re 변수 생성
 // 2) getMyObject() 호출
 //    => JVM Stack: ref 변수 생성
 //    => Method Area: MyObject 클래스를 로딩
@@ -38,6 +38,6 @@ public class Exam0430 {
 //    => JVM Stack: getMyObject() 관련 메모리(ref 변수) 제거
 //    => MyObject의 인스턴스의 주소 리턴
 // 4) main() 호출 끝
-//    => JVM Stack: main() 관련 메모리 제거 
+//    => JVM Stack: main() 관련 메모리 제거
 // 5) JVM 종료
 //    => JVM이 사용한 모든 메모리(Method Area, JVM Stack, Heap 등)를 OS 반납.

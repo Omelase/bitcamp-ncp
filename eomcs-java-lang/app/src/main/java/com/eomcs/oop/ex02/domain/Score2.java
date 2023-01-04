@@ -2,12 +2,17 @@ package com.eomcs.oop.ex02.domain;
 
 public class Score2 {
 
-  public String name; 
+  public String name;
   public int kor;
   public int eng;
   public int math;
   public int sum;
   public float aver;
+
+  public void compute() {
+    this.sum = this.kor + this.eng + this.math;
+    this.aver = (float) this.sum / 3;
+  }
 
   // new 연산자를 이용하여 인스턴스를 만들 때 자동으로 호출되는 특별한 문법의 메서드
   // => 생성자(constructor)
@@ -21,10 +26,5 @@ public class Score2 {
     this.math = m;
 
     this.compute();
-  }
-
-  public void compute() {
-    this.sum = this.kor + this.eng + this.math;
-    this.aver = (float) this.sum / 3;
   }
 }

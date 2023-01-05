@@ -14,8 +14,8 @@ public class Exam0210 {
 
     // 메서드를 호출하여 작업을 수행하고,
     // 리턴 결과는 로컬 변수에 저장한다.
-    result = plus(2, 3);
-    result = minus(result, 1);
+    result = Exam0210.plus(2, 3); // 원래 스태틱 메서드 호출 시 소속된 클래스도 같이 써야 함
+    result = minus(result, 1); // 해당 클래스 안에선 안 써도 된다.
     result = multiple(result, 7);
     result = divide(result, 3);
 

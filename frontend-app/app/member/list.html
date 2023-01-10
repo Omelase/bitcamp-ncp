@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>회원</h1>
+  <a href="form.html">회원 추가</a>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>이름</th>
+        <th>전화</th>
+        <th>우편번호</th>
+        <th>기본주소</th>
+        <th>상세주소</th>
+        <th>재직여부</th>
+        <th>성별</th>
+        <th>전공</th>
+        <th>등록일</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>제목</td>
+        <td>010-3333-3333</td>
+        <td>21023</td>
+        <td>서울시 강남구 테헤란로1번길 12-1</td>
+        <td>103-1203</td>
+        <td>예</td>
+        <td>남</td>
+        <td>비전공자</td>
+        <td>2023-01-10</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    var tbody = document.querySelector("tbody");
+
+    fetch('http://localhost:8080/members')
+      .then((response) => {return response.json();}) // 앞의 promise가 이행될 때 응답받은 json body를 promise객체로 변환
+      .then((obj) => {
+        var html = '';
+        for (var m of obj.data) {
+          html += `<tr>
+            <td>${m.no}</td>
+            <td><a href="view.html?no=${m.no}">${m.name} </a></td>
+            <td>${m.tel}</td>
+            <td>${m.postNo}</td>
+            <td>${m.basicAddress}</td>
+            <td>${m.detailAddress}</td>
+            <td>${m.working}</td>
+            <td>${m.gender}</td>
+            <td>${m.level}</td>
+            <td>${m.createdDate}</td>
+            </tr>\n`
+        }
+        tbody.innerHTML = html;
+      }) // 앞의 promise가 이행될 때 주어진 객체 내 data라는 key의 value값들을 html 변수에 추가 및 tbody에 html변수 대입
+      .catch((err) => {
+        alert("서버 요청 오류!");
+        console.log(err);
+      }); // 앞의 promise가 이행되지 않았을 때 경고 알림 및 콘솔로 알림
+  </script>
+</body>
+</!DOCTYPE>

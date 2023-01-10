@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>게시글</h1>
+  <a href="form.html">새 글</a>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성일</th>
+        <th>조회수</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>제목</td>
+        <td>2023-1-1</td>
+        <td>1</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    var tbody = document.querySelector("tbody");
+
+    fetch('http://localhost:8080/boards')
+      .then((response) => {return response.json();}) // 앞의 promise가 이행될 때 응답받은 json body를 promise객체로 변환
+      .then((obj) => {
+        var html = '';
+        for (var b of obj.data) {
+          html += `<tr>
+            <td>${b.no}</td>
+            <td><a href="view.html?no=${b.no}">${b.title} </a></td>
+            <td>${b.createdDate}</td>
+            <td>${b.viewCount}</td>
+            </tr>\n`
+        }
+        tbody.innerHTML = html;
+      }) // 앞의 promise가 이행될 때 주어진 객체 내 data라는 key의 value값들을 html 변수에 추가 및 tbody에 html변수 대입
+      .catch((err) => {
+        alert("서버 요청 오류!");
+        console.log(err);
+      }); // 앞의 promise가 이행되지 않았을 때 경고 알림 및 콘솔로 알림
+  </script>
+</body>
+</!DOCTYPE>

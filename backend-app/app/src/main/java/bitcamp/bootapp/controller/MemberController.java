@@ -9,14 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import bitcamp.bootapp.dao.MemberDao;
 import bitcamp.bootapp.vo.Member;
 
-// SpringBoot에게 다음 클래스가 클라이언트 요청을 처리하는 일을 한다는 것을 알리는 표시!
-// => SpringBoot는 다음 클래스의 인스턴스를 생성해서 보관해둔다.
-// => "/hello"라는 URL로 클라이언트 요청이 들어오면 해당 메서드를 호출한다.
 @CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:5500"})
 @RestController
 public class MemberController {
@@ -25,17 +21,19 @@ public class MemberController {
 
   @PostMapping("/members")
   public Object addMember(
-      @RequestParam(required = false) String name,
-      @RequestParam(required = false) String tel,
-      @RequestParam(required = false) String postNo,
-      @RequestParam(required = false) String basicAddress,
-      @RequestParam(required = false) String detailAddress,
-      @RequestParam(required = false) boolean working,
-      @RequestParam(required = false) char gender,
-      @RequestParam(required = false) byte level) {
-    // 클라이언트에서 보낸 데이터를 받음 값이 안넘어오면 null이 넘어옴
-    Member m = new Member();
+      //@RequestParam(required = false)
+      String name, // ..&name=xxx&..
+      String tel, // ..&tel=xxx&..
+      String postNo, // ..&postNo=xxx&..
+      String basicAddress, // ..&basicAddress=xxx&..
+      String detailAddress, // ..&detailAddress=xxx&..
+      boolean working, // ..&working=xxx&..  => "true"=true/"false"=false, 파라미터 없으면 false,
+      // "on"=true/"off"=false, "1"=true/"0"=false, 그 밖에 문자열은 변환 오류 발생!
+      char gender, // ..&gender=M&..  => 문자 1개의 문자열 변환, null 또는 그 밖에 문자열은 변환 오류 발생!
+      byte level // ..&level=1&..  => Byte.parseByte("1") => 1, null 또는 byte 범위를 초과하는 숫자는 변환 오류 발생!
+      ) {
 
+    Member m = new Member();
     m.setName(name);
     m.setTel(tel);
     m.setPostNo(postNo);
@@ -48,34 +46,32 @@ public class MemberController {
 
     this.memberDao.insert(m);
 
-    // 응답 결과를 담을 맵 객체 준비
-    Map<String, Object> contentMap = new HashMap<>(); // 문자열을 객체로 변환해서 받는다.
+    Map<String,Object> contentMap = new HashMap<>();
     contentMap.put("status", "success");
 
-    return contentMap; //클라이언트로 데이터를 json 형식으로 던짐
+    return contentMap;
   }
+
 
   @GetMapping("/members")
   public Object getMembers() {
 
     Member[] members = this.memberDao.findAll();
 
-    // 응답 결과를 담을 맵 객체 준비
-    Map<String, Object> contentMap = new HashMap<>();
+    Map<String,Object> contentMap = new HashMap<>();
     contentMap.put("status", "success");
     contentMap.put("data", members);
 
     return contentMap;
   }
 
+
   @GetMapping("/members/{memberNo}")
   public Object getMember(@PathVariable int memberNo) {
 
     Member m = this.memberDao.findByNo(memberNo);
 
-    // 리턴값을 오브젝트로 하면 제이슨문자열로 자동 응답함
-    // 응답 결과를 담을 맵 객체 준비
-    Map<String, Object> contentMap = new HashMap<>();
+    Map<String,Object> contentMap = new HashMap<>();
 
     if (m == null) {
       contentMap.put("status", "failure");
@@ -88,52 +84,49 @@ public class MemberController {
     return contentMap;
   }
 
-  @PutMapping("/members/{memberNo}")
+  @PutMapping("/members/{no}")
   public Object updateMember(
-      @PathVariable int memberNo,
-      @RequestParam(required = false) String name,
-      @RequestParam(required = false) String tel,
-      @RequestParam(required = false) String postNo,
-      @RequestParam(required = false) String basicAddress,
-      @RequestParam(required = false) String detailAddress,
-      @RequestParam(required = false) boolean working,
-      @RequestParam(required = false) char gender,
-      @RequestParam(required = false) byte level) {
+      //@PathVariable int memberNo, // Member 인스턴스로 직접 받을 수 있다.
+      Member member) {
 
-    Map<String, Object> contentMap = new HashMap<>();
+    Map<String,Object> contentMap = new HashMap<>();
 
-    Member old = this.memberDao.findByNo(memberNo);
+    Member old = this.memberDao.findByNo(member.getNo());
+    if (old == null) {
+      contentMap.put("status", "failure");
+      contentMap.put("data", "회원이 없습니다.");
+      return contentMap;
+    }
 
-    Member m = new Member();
-    m.setNo(memberNo);
-    m.setName(name);
-    m.setTel(tel);
-    m.setPostNo(postNo);
-    m.setBasicAddress(basicAddress);
-    m.setDetailAddress(detailAddress);
-    m.setWorking(working);
-    m.setGender(gender);
-    m.setLevel(level);
-    m.setCreatedDate(old.getCreatedDate());
+    member.setCreatedDate(old.getCreatedDate());
 
-    this.memberDao.update(m);
+    this.memberDao.update(member);
 
     contentMap.put("status", "success");
 
     return contentMap;
   }
+
 
   @DeleteMapping("/members/{memberNo}")
   public Object deleteMember(
-      @PathVariable int memberNo) {
-
-    Map<String, Object> contentMap = new HashMap<>();
+      @PathVariable int memberNo // 낱개로 받을 땐 @PathVariable 애노테이션 생략 불가
+      ) {
 
     Member m = this.memberDao.findByNo(memberNo);
 
-    this.memberDao.delete(m);
-    contentMap.put("status", "success");
+    Map<String,Object> contentMap = new HashMap<>();
+
+    if (m == null) {
+      contentMap.put("status", "failure");
+      contentMap.put("data", "회원이 없습니다.");
+
+    } else {
+      this.memberDao.delete(m);
+      contentMap.put("status", "success");
+    }
 
     return contentMap;
   }
+
 }

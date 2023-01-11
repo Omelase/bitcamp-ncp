@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>새 강사</h1>
+  <form>
+  <table border="1">
+    <tbody>
+      <tr>
+        <th>이름</th>
+        <td><input type="text" name="name" id="f-name"></td>
+      </tr>
+      <tr>
+        <th>전화</th>
+        <td><input type="tel" name="tel" id="f-tel"></td>
+      </tr>
+      <tr>
+        <th>이메일</th>
+        <td><input type="email" name="eMail" id="f-eMail"></td>
+      </tr>
+      <tr>
+        <th>최종학력</th>
+        <td>
+          <select name="degree" id="f-degree">
+          <option value="bachelor">학사</option>
+          <option value="master">석사</option>
+          <option value="doctor">박사</option>
+        </select>
+      </td>
+      </tr>
+      <tr>
+        <th>학교명</th>
+        <td><input type="text" name="schoolName" id="f-schoolName"></td>
+      </tr>
+      <tr>
+        <th>전공</th>
+        <td>
+          <input type="text" name="major" id="f-major">
+        </td>
+      </tr>
+      <tr>
+        <th>시급</th>
+        <td>
+          <input type="number" min="9620" step="10" value="9620" name="hourlyWage" id="f-hourlyWage">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button id="add-btn" type="button">등록</button>
+  <button id="cancel-btn" type="button">취소</button>
+  </form>
+
+  <script>
+    document.querySelector('#add-btn').onclick = (e) => {
+      var name = encodeURIComponent(document.querySelector('#f-name').value);
+      var tel = document.querySelector('#f-tel').value; // 한글 포함 안 하므로 인코드 필요없음
+      var eMail = document.querySelector('#f-eMail').value;
+      var degree = encodeURIComponent(document.querySelector('#f-degree').value);
+      var schoolName = encodeURIComponent(document.querySelector('#f-schoolName').value);
+      var major = document.querySelector('#f-major').value;
+      var hourlyWage = document.querySelector('#f-hourlyWage').value;
+
+// console.log(`name=${name}&tel=${tel}&eMail=${eMail}&degree=${degree}&schoolName=${schoolName}&major=${major}&hourlyWage=${hourlyWage}`);
+
+      fetch('http://localhost:8080/lecturers', {
+        method: 'POST',
+        headers: {
+          'Content-type': "application/x-www-form-urlencoded"
+        },
+        body: `name=${name}&tel=${tel}&eMail=${eMail}&degree=${degree}&schoolName=${schoolName}&major=${major}&hourlyWage=${hourlyWage}`
+      })
+      .then((response) => {return response.json();})
+      .then((obj) => {
+          // location.href = "list.html";
+        console.log(obj);
+      })
+      .catch((err) => {
+        alert("서버 요청 오류!");
+        console.log(err);
+      });
+    };
+
+    document.querySelector('#cancel-btn').onclick = (e) => {
+      location.href = "list.html";
+    };
+  </script>
+</body>
+</!DOCTYPE>

@@ -23,7 +23,7 @@ public class BoardDao {
     //    }
     //    return arr;
 
-    // 위와 같다
+    // 위와 같다!
     return Arrays.copyOf(boards, count);
   }
 
@@ -56,3 +56,10 @@ public class BoardDao {
     return -1;
   }
 }
+
+
+
+
+
+
+

@@ -6,13 +6,13 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>게시글</h1>
+  <h1>강사</h1>
   <form>
   <table border="1">
     <tbody>
       <tr>
         <th>번호</th>
-        <td><input type="text" name="no" id="f-no" readonly></td>
+        <td><input type="text" name="lecturerNo" id="f-lecturerNo" readonly></td>
       </tr>
       <th>이름</th>
       <td><input type="text" name="name" id="f-name"></td>
@@ -22,39 +22,35 @@
       <td><input type="text" name="tel" id="f-tel"></td>
     </tr>
     <tr>
-      <th>우편번호</th>
-      <td><input type="text" name="postNo" id="f-postNo"></td>
+      <th>이메일</th>
+      <td><input type="email" name="eMail" id="f-eMail"></td>
     </tr>
     <tr>
-      <th>기본주소</th>
-      <td><input type="text" name="basicAddress" id="f-basicAddress"></td>
-    </tr>
-    <tr>
-      <th>상세주소</th>
-      <td><input type="text" name="detailAddress" id="f-detailAddress"></td>
-    </tr>
-    <tr>
-      <th>재직여부</th>
+      <th>최종학력</th>
       <td>
-        <input type="checkbox" name="working" value="true" id="f-working"> 재직중
-      </td>
+        <select name="degree" id="f-degree">
+        <option value="bachelor">학사</option>
+        <option value="master">석사</option>
+        <option value="doctor">박사</option>
+      </select>
+    </td>
     </tr>
     <tr>
-      <th>성별</th>
-      <td>
-        <input type="radio" name="gender" value="W" id="f-gender-w" checked> 여성
-        <input type="radio" name="gender" value="M" id="f-gender-m"> 남성
-      </td>
+      <th>학교명</th>
+      <td><input type="text" name="schoolName" id="f-schoolName"></td>
     </tr>
     <tr>
       <th>전공</th>
       <td>
-        <select name="level" id="f-level">
-          <option value="0">비전공자</option>
-          <option value="1">준전공자</option>
-          <option value="2">전공자</option>
-        </select>
+        <input type="text" name="major" id="f-major">
       </td>
+    </tr>
+    <tr>
+      <th>시급</th>
+      <td>
+        <input type="number" min="9620" step="10" value="9620" name="hourlyWage" id="f-hourlyWage">
+      </td>
+    </tr>
     </tr>
       <tr>
         <th>등록일</th>
@@ -76,18 +72,18 @@
     }
 
     var values2 = values[1].split('=');
-    if (values2.length != 2 || values2[0] != "no") {
+    if (values2.length != 2 || values2[0] != "lecturerNo") {
       alert("올바른 페이지 주소가 아닙니다.");
-      throw "no 파라미터 값이 누락되었습니다.";
+      throw "lecturerNo 파라미터 값이 누락되었습니다.";
     }
 
-    var no = parseInt(values2[1]);
-    if (isNaN(no)) {
-      alert("회원 번호가 옳지 않습니다.");
-      throw "no 파라미터 값이 누락되었습니다.";
+    var lecturerNo = parseInt(values2[1]);
+    if (isNaN(lecturerNo)) {
+      alert("강사 번호가 옳지 않습니다.");
+      throw "lecturerNo 파라미터 값이 누락되었습니다.";
     }
 
-    fetch(`http://localhost:8080/members/${no}`)
+    fetch(`http://localhost:8080/lecturers/${lecturerNo}`)
     .then((response) => response.json())
     .then((obj) => {
       if (obj.status == "failure") {
@@ -96,19 +92,14 @@
         return;
       }
 
-      document.querySelector("#f-no").value = obj.data.no;
+      document.querySelector("#f-lecturerNo").value = obj.data.lecturerNo;
       document.querySelector("#f-name").value = obj.data.name;
       document.querySelector("#f-tel").value = obj.data.tel;
-      document.querySelector("#f-postNo").value = obj.data.postNo;
-      document.querySelector("#f-basicAddress").value = obj.data.basicAddress;
-      document.querySelector("#f-detailAddress").value = obj.data.detailAddress;
-      document.querySelector("#f-working").checked = obj.data.working;
-      if(obj.data.gender == 'W') {
-        document.querySelector("#f-gender-w").checked = true;
-      } else {
-        document.querySelector("#f-gender-m").checked = true;
-      }
-      document.querySelector("#f-level").value = obj.data.level; // select 태그는 value
+      document.querySelector("#f-eMail").value = obj.data.eMail;
+      document.querySelector("#f-degree").value = obj.data.degree;
+      document.querySelector("#f-schoolName").value = obj.data.schoolName;
+      document.querySelector("#f-major").value = obj.data.major;
+      document.querySelector("#f-hourlyWage").checked = obj.data.hourlyWage;
       document.querySelector("#f-createdDate").innerHTML = obj.data.createdDate; // span태그는 innerHTML
     })
     .catch((err) => {
@@ -119,25 +110,24 @@
     document.querySelector('#update-btn').onclick = (e) => {
       var name = encodeURIComponent(document.querySelector('#f-name').value);
       var tel = document.querySelector('#f-tel').value; // 한글 포함 안 하므로 인코드 필요없음
-      var postNo = document.querySelector('#f-postNo').value;
-      var basicAddress = encodeURIComponent(document.querySelector('#f-basicAddress').value);
-      var detailAddress = encodeURIComponent(document.querySelector('#f-detailAddress').value);
-      var working = document.querySelector('#f-working').checked;
-      var gender = document.querySelector('#f-gender-w').checked ? 'W' : 'M';
-      var level = document.querySelector('#f-level').value;
+      var eMail = document.querySelector('#f-eMail').value;
+      var degree = encodeURIComponent(document.querySelector('#f-degree').value);
+      var schoolName = encodeURIComponent(document.querySelector('#f-schoolName').value);
+      var major = document.querySelector('#f-major').value;
+      var hourlyWage = document.querySelector('#f-hourlyWage').value;
 
-      fetch(`http://localhost:8080/members/${no}`, {
+      fetch(`http://localhost:8080/lecturers/${lecturerNo}`, {
         method: 'PUT',
         headers: {
           'Content-type': "application/x-www-form-urlencoded"
         },
-        body: `name=${name}&tel=${tel}&postNo=${postNo}&basicAddress=${basicAddress}&detailAddress=${detailAddress}&working=${working}&gender=${gender}&level=${level}`
+        body: `name=${name}&tel=${tel}&eMail=${eMail}&degree=${degree}&schoolName=${schoolName}&major=${major}&hourlyWage=${hourlyWage}`
       })
       .then((response) => response.json())
       .then((obj) => {
         if (obj.status == "failure") {
           alert("서버 요청 오류!");
-          alert("회원 변경 오류!\n" + obj.data);
+          alert("강사 변경 오류!\n" + obj.data);
           return;
         }
           location.href = "list.html";
@@ -150,13 +140,13 @@
 
     document.querySelector('#delete-btn').onclick = (e) => {
 
-      fetch(`http://localhost:8080/members/${no}`, {
+      fetch(`http://localhost:8080/lecturers/${lecturerNo}`, {
         method: 'DELETE'
       })
       .then((response) => response.json())
       .then((obj) => {
         if (obj.status == "failure") {
-          alert("회원 삭제 오류!\n" + obj.data);
+          alert("강사 삭제 오류!\n" + obj.data);
           return;
         }
           location.href = "list.html";

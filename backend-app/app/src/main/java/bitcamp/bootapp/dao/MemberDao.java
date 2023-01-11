@@ -39,12 +39,19 @@ public class MemberDao {
     this.members[--this.count] = null; // 레퍼런스 카운트를 줄인다.
   }
 
-  private int indexOf(Member m) {
+  private int indexOf(Member b) {
     for (int i = 0; i < this.count; i++) {
-      if (this.members[i].getNo() == m.getNo()) {
+      if (this.members[i].getNo() == b.getNo()) {
         return i;
       }
     }
     return -1;
   }
 }
+
+
+
+
+
+
+

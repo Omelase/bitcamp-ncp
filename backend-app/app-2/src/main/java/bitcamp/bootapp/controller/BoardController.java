@@ -3,6 +3,7 @@ package bitcamp.bootapp.controller;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,15 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import bitcamp.bootapp.dao.BoardDao;
 import bitcamp.bootapp.vo.Board;
 
-
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:5500"})
 @RestController
 public class BoardController {
 
   BoardDao boardDao = new BoardDao();
-
-  public BoardController(BoardDao boardDao) {
-    this.boardDao = boardDao;
-  }
 
   @PostMapping("/boards")
   public Object addBoard(

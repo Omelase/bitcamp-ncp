@@ -6,8 +6,8 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>회원</h1>
-  <a href="form.html">새 회원</a>
+  <h1>학생</h1>
+  <a href="form.html">새 학생</a>
   <table border="1">
     <thead>
       <tr>
@@ -40,7 +40,7 @@
       }
     }
 
-    fetch('http://localhost:8080/members')
+    fetch('http://localhost:8080/students')
       .then((response) => {return response.json();}) // 앞의 promise가 이행될 때 응답받은 json body를 promise객체로 변환
       .then((obj) => {
         var html = '';

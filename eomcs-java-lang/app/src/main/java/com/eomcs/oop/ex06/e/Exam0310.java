@@ -6,6 +6,8 @@ class C {
   // 생성자에서 초기화시켜야 한다.
   //
   final int v1;
+  // final int v1 = 100;이 아닌 이유?
+  // 어차피 variable initializer는 컴파일 시 아래처럼 생성자의 첫번째 줄에 입력됨
 
   public C() {
     v1 = 100;

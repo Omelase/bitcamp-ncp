@@ -34,6 +34,10 @@ public class Exam0511 {
     void m1() {
       System.out.println("X4의 m1()");
     }
+
+    void x() {
+      System.out.println("X4의 x()");
+    }
   }
 
   public static void main(String[] args) {

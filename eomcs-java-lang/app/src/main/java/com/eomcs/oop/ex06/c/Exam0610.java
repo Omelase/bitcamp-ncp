@@ -15,16 +15,16 @@ public class Exam0610 {
   }
 
   static class SedanFactory extends CarFactory {
-    // 오버라이딩 메서드의 리턴 타입은 
+    // 오버라이딩 메서드의 리턴 타입은
     // 서브 클래스도 가능하다.
     @Override
     Sedan create() {
-      return new Sedan();
+      return new Sedan(); // Tico() 리턴 가능
     }
   }
 
   static class TicoFactory extends SedanFactory {
-    // 오버라이딩 메서드의 리턴 타입은 
+    // 오버라이딩 메서드의 리턴 타입은
     // 서브 클래스도 가능하다.
     @Override
     Tico create() {

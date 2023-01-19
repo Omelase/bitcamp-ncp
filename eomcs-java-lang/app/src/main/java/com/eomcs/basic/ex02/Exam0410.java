@@ -14,6 +14,20 @@ public class Exam0410 {
     // Calendar는 인스턴스 생성을 도와주는 별도의 클래스 메서드(스태틱 메서드)를 제공한다.
     c1 = Calendar.getInstance();
     System.out.println(c1.get(Calendar.YEAR));
+    System.out.println(c1.get(Calendar.MONTH) + 1);
+    System.out.println(c1.get(Calendar.DATE));
+    System.out.println(c1.get(Calendar.HOUR));
+    System.out.println(c1.get(Calendar.AM_PM));
+    System.out.println(c1.get(Calendar.MINUTE));
+    System.out.println(c1.get(Calendar.SECOND));
+
+    System.out.println(c1.get(1)); // 년
+    System.out.println(c1.get(2) + 1); // // 월. 0부터 시작
+    System.out.println(c1.get(5)); // 일
+    System.out.println(c1.get(10)); // 시
+    System.out.println(c1.get(9)); // am/pm
+    System.out.println(c1.get(12)); // 분
+    System.out.println(c1.get(13)); // 초
 
   }
 }

@@ -12,6 +12,7 @@ public class Exam0630 {
     //    굳이 finally 블록에서 close()를 직접 호출할 필요가 없다.
     //    자동으로 처리한다.
     // => 단 java.lang.AutoCloseable 구현체에 대해서만 가능하다!
+    //    (AutoCloseable클래스를 상속받음)
     // => 문법
     // try (java.lang.AutoCloseable 구현체) {...}
     try (Scanner keyScan = new Scanner(System.in); // OK!

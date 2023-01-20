@@ -27,12 +27,13 @@ public class App {
       System.out.println("9. 종료");
 
       int menuNo;
+
       try {
         menuNo = Prompt.inputInt("메뉴> ");
       } catch (Exception e) {
         System.out.println("메뉴 번호가 옳지 않습니다!");
-        continue;
-      }
+        continue; // while문으로 다시 돌아감
+      }// Throwable: 예외발생 시 받는 객체
 
       try {
         switch (menuNo) {
@@ -50,7 +51,6 @@ public class App {
       }
     }
   }
-
 } // class App
 
 

@@ -2,12 +2,11 @@ package bitcamp.myapp.handler;
 
 import bitcamp.myapp.dao.TeacherDao;
 import bitcamp.myapp.vo.Teacher;
-import bitcamp.util.ArrayList;
 import bitcamp.util.Prompt;
 
 public class TeacherHandler {
 
-  private TeacherDao teacherDao = new TeacherDao(new ArrayList());
+  private TeacherDao teacherDao = new TeacherDao();
   private String title;
 
   public TeacherHandler(String title) {
@@ -29,11 +28,12 @@ public class TeacherHandler {
 
   private void printTeachers() {
 
-    Teacher[] teachers = this.teacherDao.findAll();
+    Object[] teachers = this.teacherDao.findAll();
 
     System.out.println("번호\t이름\t전화\t학위\t전공\t시강료");
 
-    for (Teacher m : teachers) {
+    for (Object obj : teachers) {
+      Teacher m = (Teacher) obj;
       System.out.printf("%d\t%s\t%s\t%s\t%s\t%d\n",
           m.getNo(), m.getName(), m.getTel(),
           getDegreeText(m.getDegree()), m.getMajor(), m.getWage());

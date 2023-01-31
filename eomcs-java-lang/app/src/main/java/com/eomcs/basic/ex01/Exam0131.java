@@ -52,8 +52,7 @@ public class Exam0131 {
       return age == other.age && Objects.equals(email, other.email) && gender == other.gender
           && Objects.equals(name, other.name) && Objects.equals(tel, other.tel)
           && working == other.working;
-    } // other는 파라미터
-
+    }
   }
 
 }

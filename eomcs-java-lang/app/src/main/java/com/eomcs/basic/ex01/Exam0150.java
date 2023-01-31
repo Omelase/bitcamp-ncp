@@ -20,11 +20,12 @@ public class Exam0150 {
     //    public int hashCode() {
     //      return 100;
     //    }
-    //
+
     //    @Override
     //    public boolean equals(Object obj) {
     //      return true;
     //    }
+
   }
 
   public static void main(String[] args) {
@@ -62,21 +63,14 @@ public class Exam0150 {
     //
     // HashSet = Hash + Set
     // => 값을 저장할 때 해시값을 계산하여 저장 위치를 알아낸다.
-    // => 집합 방식으로 목록을 다룬다. 즉, 중복 값을 저장하지 않는다.
+    // => 집합 방식으로 목록을 다룬다. 즉 중복 값을 저장하지 않는다.
     // => 저장 과정:
     //    1) equals()와 hashCode()를 호출하여 중복 여부를 검사한다.
-    //    2) equals()의 리턴 값도 true이고, hashCode()의 리턴 값도 같을 경우,
-    //       같은 객체로 간주하여 저장하지 않는다
-    //    3) 저장할 때 저장위치는 hashCode()의 리턴 값을 사용하여 계산한다.
-
-    // 현재 예제의 문제점?
-    // => s1과 s2는 같은 데이터를 갖고 있지만, 다른 해시 코드를 리턴하기 때문에
-    //    HashSet 입장에서는 s1과 s2를 다른 값으로 취급한다.
-    // => 그래서 s1과 s2 모두 HashSet에 보관된 것이다.
+    //    2) equals()의 리턴 값도 true이고 hashCode()의 리턴 값도 같을 경우,
+    //       같은 객체로 판단하여 저장하지 않는다.
+    //    3) 저장할 때 저장 위치는 hashCode()의 리턴 값을 사용하여 계산한다.
     //
-    // 해결책?
-    // => Student 클래스에서 hashCode()를 오버라이딩 하여
-    //    같은 데이터에 대해 같은 해시코드를 리턴하도록 만들어야 한다.
+
   }
 
 }

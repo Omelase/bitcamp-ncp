@@ -1,5 +1,4 @@
 // gradle 빌드 도구에 플러그인 장착
-// gradle 명령어에 아래 도구 추가
 plugins {
     // 자바 소스를 컴파일할 때 사용할 도구를 추가한다.
     // 뿐만 아니라 eclipse 플러그인과 결합해서
@@ -13,7 +12,6 @@ plugins {
 }
 
 // 자바 소스를 컴파일 할 때 적용할 옵션
-// gradle compileJava 명령어 실행 시 아래 옵션을 적용
 tasks.withType(JavaCompile) {
     // 프로젝트의 소스 파일 인코딩을 gradle에게 알려준다.
     // $javac -encoding UTF-8 ..
@@ -23,8 +21,9 @@ tasks.withType(JavaCompile) {
     sourceCompatibility = '17'
 
     // 자바 클래스를 실행시킬 JVM의 최소 버전
-    targetCompatibility = '17' // 소스 파일 버전과 같거나 커야 함
+    targetCompatibility = '17'
 }
+
 
 // .class 파일을 둘 폴더를 지정하지 않으면 
 // Gradle 은 기본 출력 폴더의 경로로 'bin/default' 를 사용한다.
@@ -54,6 +53,7 @@ eclipse {
 }
 */
 
+// eclipse 프로젝트 이름을 설정하기
 eclipse {
     project {
         name = "eomcs-java-lang"
@@ -97,13 +97,13 @@ dependencies {
   // implementation 'org.mybatis:mybatis-spring:2.0.6'
 
   // MariaDB JDBC 드라이버
-  // implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.7'
+  //   implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.7'
 
   // Oracle JDBC Driver
-  // implementation 'com.oracle.database.jdbc:ojdbc11-production:21.7.0.0'
+  //   implementation 'com.oracle.database.jdbc:ojdbc11-production:21.7.0.0'
     
   // MSSQL JDBC Driver
-  // implementation 'com.microsoft.sqlserver:mssql-jdbc:11.2.0.jre17'
+  //   implementation 'com.microsoft.sqlserver:mssql-jdbc:11.2.0.jre17'
   
   // Google JSON 라이브러리
   // implementation 'com.google.code.gson:gson:2.8.9'
@@ -122,6 +122,5 @@ dependencies {
   // implementation 'org.apache.logging.log4j:log4j-core:2.14.1'
 
   testImplementation 'junit:junit:4.13.2'
-
   implementation 'com.google.guava:guava:31.1-jre'
 }

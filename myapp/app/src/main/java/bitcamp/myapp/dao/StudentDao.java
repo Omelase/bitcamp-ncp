@@ -1,31 +1,36 @@
 package bitcamp.myapp.dao;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.sql.Date;
+import java.util.Iterator;
+import java.util.List;
 import bitcamp.myapp.vo.Student;
-import bitcamp.util.List;
 
 public class StudentDao {
 
-  List list;
-
-  public StudentDao(List list) {
-    this.list = list;
-  }
+  List<Student> list;
 
   int lastNo;
 
-  public void insert(Student student) {
-    student.setNo(++lastNo);
-    student.setCreatedDate(new Date(System.currentTimeMillis()).toString());
+  public StudentDao(List<Student> list) {
+    this.list = list;
+  }
 
-    list.add(student);
+  public void insert(Student s) {
+    s.setNo(++lastNo);
+    s.setCreatedDate(new Date(System.currentTimeMillis()).toString());
+    list.add(s);
   }
 
   public Student[] findAll() {
     Student[] students = new Student[list.size()];
-    Object[] arr = list.toArray();
-    for (int i = 0; i < students.length; i++) {
-      students[i] = (Student) arr[i];
+    Iterator<Student> i = list.iterator();
+    int index = 0;
+    while (i.hasNext()) {
+      students[index++] = i.next();
     }
     return students;
   }
@@ -38,8 +43,7 @@ public class StudentDao {
     if (index == -1) {
       return null;
     }
-
-    return (Student) list.get(index);
+    return list.get(index);
   }
 
   public void update(Student s) {
@@ -49,6 +53,32 @@ public class StudentDao {
 
   public boolean delete(Student s) {
     return list.remove(s);
+  }
+
+  public void save(String filename) {
+    try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
+      out.writeObject(list);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  @SuppressWarnings("unchecked")
+  public void load(String filename) {
+    if (list.size() > 0) { // 서비스들어갈 때마다 중복 로딩 방지!
+      return;
+    }
+
+    try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
+
+      list = (List<Student>) in.readObject();
+
+      if (list.size() > 0) {
+        lastNo = list.get(list.size() -1).getNo();
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }
 

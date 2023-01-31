@@ -23,7 +23,7 @@ public class Exam0220 {
     // ProtocolA 입장에서는 rule0() 규칙 준수!
     // ProtocolB 입장에서도 rule0() 규칙 준수!
     @Override
-    public void rule0() {System.out.println("rule1()");}
+    public void rule0() {System.out.println("rule0()");}
 
     // ProtocolA 규칙 준수!
     @Override
@@ -46,8 +46,9 @@ public class Exam0220 {
     // - 해당 인터페이스의 규칙에 따라서만 호출할 수 있다.
     b.rule2(); // OK
     //    b.rule1(); // 컴파일 오류!
+    b.rule0();
     System.out.println("-------------------------------");
-
+    a.rule0();
     a.rule1(); // OK!
     //    a.rule2(); // 컴파일 오류!
   }

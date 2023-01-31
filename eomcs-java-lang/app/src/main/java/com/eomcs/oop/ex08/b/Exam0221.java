@@ -1,8 +1,6 @@
 // 캡슐화(encapsulation) 응용 - 생성자를 private 으로 막기 1
 package com.eomcs.oop.ex08.b;
 
-import java.util.Calendar;
-
 class Car {
   String model;
   String maker;
@@ -52,7 +50,6 @@ public class Exam0221 {
 
   public static void main(String[] args) {
 
-    java.util.Calendar cal = Calendar.getInstance(); // Calendar는 protected객체. 같은 패키지도 아니고 서브클래스도 아님
     //    Car c1 = new Car(); // 컴파일 오류!
     // 생성자가 private이기 때문에 다른 클래스에서 호출할 수 없다.
     // 따라서 인스턴스를 생성할 수 없다.

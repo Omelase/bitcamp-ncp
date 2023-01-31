@@ -6,7 +6,7 @@ class F {
   // 보통 스태틱 필드(클래스 필드)로 만든다.
   // 공개할 경우 public 으로 선언한다.
   //
-  public static final int v1 = 100; // 이쪽이 더 직관적
+  public static final int v1 = 100;
 
   // 스태틱 상수 필드는 스태틱 블록에서 초기화시킬 수 있다.
   public static final int v2;

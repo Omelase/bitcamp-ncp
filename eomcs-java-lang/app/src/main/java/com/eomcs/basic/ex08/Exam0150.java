@@ -70,8 +70,8 @@ public class Exam0150 {
     System.out.printf("equals(): %b\n", k3.equals(k6));
     System.out.printf("hashCode(): %d, %d\n", k3.hashCode(), k6.hashCode());
     System.out.println("-----------------------------------");
-
     System.out.println(map.get(k6));
+    System.out.println(map);
     // k3와 k6는 인스턴스가 다르더라도
     // hashCode()의 리턴 값이 같고, equals()의 결과가 true이기 때문에
     // 같은 key로 간주한다.

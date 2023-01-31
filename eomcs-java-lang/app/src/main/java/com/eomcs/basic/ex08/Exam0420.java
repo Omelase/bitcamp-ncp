@@ -18,6 +18,7 @@ public class Exam0420 {
     // elements() 도 있다.
     // 사용법은 Iterator 와 유사하다.
     Enumeration<Member> values = table.elements();
+    System.out.println(values);
     while (values.hasMoreElements()) {
       System.out.println(values.nextElement());
     }

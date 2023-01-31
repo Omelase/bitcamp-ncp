@@ -25,11 +25,11 @@ public class Exam0440 {
 }
 // JVM Stack 메모리의 사용
 // 0) 시작
-// 1) main(args, r)
-// 2) main(args, r) => m1(5, r1, r2)
-// 3) main(args, r) => m1(5, r1, r2) => m2(5)
-// 4) main(args, r) => m1(5, 105, r2)
-// 5) main(args, r) => m1(5, 105, r2) => m3(5)
-// 6) main(args, r) => m1(5, 105, 205)
-// 7) main(args, 310)
+// 1) main()
+// 2) main() => m1()
+// 3) main() => m1() => m2()
+// 4) main() => m1()
+// 5) main() => m1() => m3()
+// 6) main() => m1()
+// 7) main()
 // 8) 종료!

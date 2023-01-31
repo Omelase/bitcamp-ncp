@@ -1,9 +1,10 @@
 // # 변수의 종류
+//
 package com.eomcs.oop.ex03;
 
 public class Exam0100 {
 
-  // static 필드 = 클래스 필드 (변수)
+  // static 필드 = 클래스 필드(변수)
   // - 클래스를 로딩할 때 Method Area 영역에 생성된다.
   // - 클래스는 단 한 번만 로딩된다.
   // - 따라서 스태틱 변수도 한 번만 생성된다.
@@ -27,7 +28,7 @@ public class Exam0100 {
     // <=== 현재 실행 시점
     // - Method Area: a 변수 존재
     // - JVM Stack: args, c, obj 변수 존재
-    // - Heap: 아직 생성된 객체없음
+    // - Heap: 아직 생성된 객체 없음
 
     Exam0100 obj; // obj는 main()을 호출할 때 시작 시점에 JVM Stack에 생성된 상태이다.
 
@@ -39,5 +40,9 @@ public class Exam0100 {
     // - Heap: b 변수 존재
 
     System.out.println(c);
+
   }
 }
+
+
+

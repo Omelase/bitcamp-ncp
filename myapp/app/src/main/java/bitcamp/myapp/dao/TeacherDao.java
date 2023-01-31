@@ -1,32 +1,36 @@
 package bitcamp.myapp.dao;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.sql.Date;
+import java.util.Iterator;
+import java.util.List;
 import bitcamp.myapp.vo.Teacher;
-import bitcamp.util.List;
 
 public class TeacherDao {
 
-  List list;
-
-  public TeacherDao(List list) {
-    this.list = list;
-  }
+  List<Teacher> list;
 
   int lastNo;
 
-  public void insert(Teacher teacher) {
-    Teacher t = teacher;
+  public TeacherDao(List<Teacher> list) {
+    this.list = list;
+  }
+
+  public void insert(Teacher t) {
     t.setNo(++lastNo);
     t.setCreatedDate(new Date(System.currentTimeMillis()).toString());
-
-    list.add(teacher);
+    list.add(t);
   }
 
   public Teacher[] findAll() {
     Teacher[] teachers = new Teacher[list.size()];
-    Object[] arr = list.toArray();
-    for (int i = 0; i < teachers.length; i++) {
-      teachers[i] = (Teacher) arr[i];
+    Iterator<Teacher> i = list.iterator();
+    int index = 0;
+    while (i.hasNext()) {
+      teachers[index++] = i.next();
     }
     return teachers;
   }
@@ -40,7 +44,7 @@ public class TeacherDao {
       return null;
     }
 
-    return (Teacher) list.get(index);
+    return list.get(index);
   }
 
   public void update(Teacher t) {
@@ -51,6 +55,33 @@ public class TeacherDao {
   public boolean delete(Teacher t) {
     return list.remove(t);
   }
+
+  public void save(String filename) {
+    try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
+      out.writeObject(list);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  @SuppressWarnings("unchecked")
+  public void load(String filename) {
+    if (list.size() > 0) {
+      return;
+    }
+
+    try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
+
+      list = (List<Teacher>) in.readObject();
+
+      if (list.size() > 0) {
+        lastNo = list.get(list.size() -1).getNo();
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
 }
 
 

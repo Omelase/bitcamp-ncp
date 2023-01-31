@@ -14,6 +14,7 @@ public class Exam0220 {
   // => "Unchecked Exception"이라 부른다.
   //    즉, 해당 메서드를 예외를 던지는지 검사하지 않는 예외라는 뜻이다.
   // => 보통 스텔스 모드(비유!)로 예외를 전달할 때 사용한다.
+  //
   static void m2() {
     throw new RuntimeException();
   }

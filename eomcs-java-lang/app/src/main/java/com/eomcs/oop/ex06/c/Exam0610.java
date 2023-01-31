@@ -19,7 +19,7 @@ public class Exam0610 {
     // 서브 클래스도 가능하다.
     @Override
     Sedan create() {
-      return new Sedan(); // Tico() 리턴 가능
+      return new Sedan();
     }
   }
 

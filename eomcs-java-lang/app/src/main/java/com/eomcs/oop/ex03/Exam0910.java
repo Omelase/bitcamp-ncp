@@ -12,7 +12,7 @@ public class Exam0910 {
     // char = '\u0000'
     //
     // 주의! 로컬 변수는 자동 초기화 되지 않는다.
-
+    //
     int bright; // 밝기 (0% ~ 100%)
     int contrast; // 명암 (0% ~ 100%)
     int widthRes; // 해상도 너비

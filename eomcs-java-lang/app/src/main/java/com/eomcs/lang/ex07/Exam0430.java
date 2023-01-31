@@ -13,7 +13,7 @@ public class Exam0430 {
   }
 
   static MyObject getMyObject() {
-    MyObject ref = new MyObject();
+    MyObject ref = new MyObject(); // MyObject에 선언된대로 변수를 Heap에 만들라!
     ref.a = 100;
     ref.b = 200;
 
@@ -21,15 +21,15 @@ public class Exam0430 {
   }
 
   public static void main(String[] args) {
-    MyObject re;
-    re = getMyObject();
-    System.out.println(re.a);
-    System.out.println(re.b);
+    MyObject ref;
+    ref = getMyObject();
+    System.out.println(ref.a);
+    System.out.println(ref.b);
   }
 }
 
 // 1) main() 호출
-//    => JVM Stack: args, re 변수 생성
+//    => JVM Stack: args, ref 변수 생성
 // 2) getMyObject() 호출
 //    => JVM Stack: ref 변수 생성
 //    => Method Area: MyObject 클래스를 로딩

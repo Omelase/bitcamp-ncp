@@ -1,13 +1,13 @@
 package bitcamp.myapp.handler;
 
+import java.util.LinkedList;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.Board;
-import bitcamp.util.LinkedList;
 import bitcamp.util.Prompt;
 
 public class BoardHandler {
 
-  private BoardDao boardDao = new BoardDao(new LinkedList());
+  private BoardDao boardDao = new BoardDao(new LinkedList<Board>());
   private String title;
 
   // 인스턴스를 만들 때 프롬프트 제목을 반드시 입력하도록 강제한다.
@@ -115,6 +115,7 @@ public class BoardHandler {
 
   private void searchBoard() {
     Board[] boards = this.boardDao.findAll();
+
     String keyword = Prompt.inputString("검색어? ");
     System.out.println("번호\t제목\t작성일\t조회수");
 
@@ -128,6 +129,9 @@ public class BoardHandler {
   }
 
   public void service() {
+
+    boardDao.load("board.csv");
+
     while (true) {
       System.out.printf("[%s]\n", this.title);
       System.out.println("1. 등록");
@@ -140,7 +144,9 @@ public class BoardHandler {
       int menuNo = Prompt.inputInt(String.format("%s> ", this.title));
 
       switch (menuNo) {
-        case 0: return;
+        case 0:
+          boardDao.save("board.csv");
+          return;
         case 1: this.inputBoard(); break;
         case 2: this.printBoards(); break;
         case 3: this.printBoard(); break;

@@ -64,6 +64,8 @@ public class Exam0221 {
     Member[] arr = new Member[0];
     Member[] arr2 = list.toArray(arr); // 새로 배열을 만들어 리턴
     System.out.println(arr == arr2);
+    System.out.println(arr);
+    System.out.println(arr2);
 
     for (Member m : arr2) {
       System.out.printf("이름: %s, 나이: %d\n", m.name, m.age);

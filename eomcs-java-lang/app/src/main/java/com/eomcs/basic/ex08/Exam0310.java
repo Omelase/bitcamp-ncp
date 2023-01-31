@@ -17,13 +17,13 @@ public class Exam0310 {
     Set<String> keys = map.keySet();
     // keySet() 이 리턴하는 것은 HashMap의 key 목록을 다루는 객체이다.
     // 별도로 key 목록을 만들어 리턴하지 않는다.
-
+    System.out.println(keys);
     // 따라서 다음과 같이 맵의 데이터를 지운다면,
     // 당연히 키 목록에서 해당 키도 삭제될 것이다.
     map.remove("s01");
     map.remove("s02");
     map.remove("s03");
-
+    System.out.println(keys);
     // 그런 후 Set 객체를 통해 key 를 꺼낼 때,
     // Map에서 제거된 키는 꺼낼 수 없다.
     // 왜?

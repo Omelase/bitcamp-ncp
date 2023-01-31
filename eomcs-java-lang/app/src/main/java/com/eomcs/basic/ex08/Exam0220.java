@@ -19,6 +19,7 @@ public class Exam0220 {
     // value 객체 목록은 Collection 에 담아서 리턴한다.
     //
     java.util.Collection<Member> values = map.values();
+    System.out.println(values);
     for (Member value : values) {
       System.out.println(value);
     }

@@ -18,6 +18,8 @@ public class Exam0230 {
     Set<Entry<String,Member>> entrySet = map.entrySet();
     // key,value가 한쌍으로 묶여있는 객체들이 들어있다.
 
+    System.out.println(entrySet);
+
     for (Entry<String,Member> entry : entrySet) {
       System.out.printf("%s ===> %s\n",
           entry.getKey(),

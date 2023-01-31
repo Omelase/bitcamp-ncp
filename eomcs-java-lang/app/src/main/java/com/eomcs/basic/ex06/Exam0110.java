@@ -20,7 +20,7 @@ public class Exam0110 {
 
     // Queue
     // - FIFO(First In First Out) 방식으로 데이터를 꺼낸다.
-    // 
+    //
     System.out.println("==>" + queue.poll()); // bbb, ccc,
     System.out.println("==>" + queue.poll()); // ccc,
     print(queue);

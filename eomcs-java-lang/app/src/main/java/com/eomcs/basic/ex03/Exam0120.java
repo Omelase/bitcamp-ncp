@@ -59,6 +59,7 @@ public class Exam0120 {
     System.out.println(list.get(2)); // yyy
     System.out.println(list.get(3)); // xxx
 
+    System.out.println(list.contains("dd"));
     // 인덱스가 유효하지 않을 때 IndexOutOfBoundsException 예외가 발생한다.
     //    System.out.println(list.get(100));
   }

@@ -6,7 +6,7 @@ public class Exam0520 {
 
   // 프로그램 아규먼트
   // - jvm을 실행할 때 프로그램에 전달하는 값
-  // - 예) app들어가서
+  // - 예)
   // > java -cp bin/main com.eomcs.lang.ex07.Exam0520 aaa bbb cccc
   // aaa bbb cccc 가 프로그램 아규먼트이다.
   //

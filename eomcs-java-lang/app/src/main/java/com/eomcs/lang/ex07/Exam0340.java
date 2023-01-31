@@ -23,8 +23,8 @@ public class Exam0340 {
     int a = 100;
     int b = 200;
 
-    MyObject re = swap(a, b);
+    MyObject ref = swap(a, b);
 
-    System.out.printf("main(): ref.a=%d, ref.b=%d\n", re.a, re.b);
+    System.out.printf("main(): ref.a=%d, ref.b=%d\n", ref.a, ref.b);
   }
 }

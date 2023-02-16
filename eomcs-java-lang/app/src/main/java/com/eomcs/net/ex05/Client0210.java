@@ -21,7 +21,7 @@ public class Client0210 {
     // 데이터를 받을 상대편 주소와 포트 번호
     String receiver = "localhost";
     int port = 8888;
-
+    System.out.println(InetAddress.getByName("localhost"));
     // 보낼 데이터를 바이트 배열로 준비
     //    String message = new String("Hello"); // Heap에 String 객체 생성
     //    String message = "Hello"; // constant pool에 String 객체 생성

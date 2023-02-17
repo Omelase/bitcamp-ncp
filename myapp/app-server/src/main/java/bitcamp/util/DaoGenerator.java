@@ -32,6 +32,8 @@ public class DaoGenerator implements InvocationHandler{
         );
   }
 
+
+
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     SqlSession sqlSession = sqlSessionFactory.openSession();

@@ -1,4 +1,4 @@
-create table app_board(
+create table app_board (
   board_id int not null,
   title varchar(255) not null,
   content text not null,
@@ -10,6 +10,7 @@ create table app_board(
 alter table app_board
   add constraint primary key (board_id),
   modify column board_id int not null auto_increment;
+
 
 create table app_student(
   student_id int not null,
@@ -27,6 +28,7 @@ create table app_student(
 alter table app_student
   add constraint primary key (student_id),
   modify column student_id int not null auto_increment;
+
   
 create table app_teacher(
   teacher_id int not null,
@@ -43,3 +45,6 @@ create table app_teacher(
 alter table app_teacher
   add constraint primary key (teacher_id),
   modify column teacher_id int not null auto_increment;
+  
+  
+  

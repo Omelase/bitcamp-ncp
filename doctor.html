@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>의사용 웹사이트</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+/* 전체 페이지 스타일링 */
+html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      /* header 스타일링 */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        margin: 0 10px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+
+      nav ul li a:hover {
+        color: #666;
+      }
+
+      /* aside 스타일링 */
+      aside {
+        display: flex;
+        flex-direction: column;
+      }
+
+      aside nav {
+        display: flex;
+        flex-direction: column;
+      }
+
+aside nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+      aside nav ul li {
+        margin-bottom: 10px;
+      }
+
+      aside nav ul li a {
+        color: black;
+        text-decoration: none;
+        display: block;
+        padding: 5px;
+      }
+
+      nav ul li.active a {
+        color: #007bff;
+      }
+
+      nav ul li.active a::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background-color: #007bff;
+        transition: width 0.3s ease;
+      }
+
+      nav ul li.active a:hover::after {
+        width: 100%;
+      }
+
+      /* section 스타일링 */
+      section {
+        padding: 20px;
+      }
+
+      /* footer 스타일링 */
+      footer {
+        background-color: #f9f9f9;
+        box-shadow: 1px -1px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        height: 60px;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <h1>의사용 웹사이트</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#community">커뮤니티</a></li>
+          <li><a href="#notice">공지사항</a></li>
+          <li><a href="#login">로그인</a></li>
+          <li><a href="#notification">알림</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <aside>
+        <nav>
+          <ul>
+            <li><a href="#all-consultations">전체 상담글 조회</a></li>
+            <li><a href="#patient-history">환자 진료내역</a></li>
+            <li><a href="#patient-review">환자 진료 리뷰</a></li>
+            <li><a href="#hospital-info">나의 병원 정보</a></li>
+            <li><a href="#my-info">나의 개인 정보</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <section>
+        <!-- 메인 내용 -->
+      </section>
+    </main>
+    <footer>
+      <p>의사용 웹사이트</p>
+    </footer>
+  </body>
+</html>
